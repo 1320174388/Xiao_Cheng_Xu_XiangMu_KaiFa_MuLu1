@@ -13,6 +13,6 @@
  * 路由功能：执行用户登录路由地址
  */
 Route::post(
-    ':v/login_init/:code',
+    ':v/login_module/login_init/:code',
     'login_module/:v.controller.LoginController/loginInit'
 );

@@ -8,5 +8,5 @@
  *  历史记录 :  -----------------------
  */
 return [
-    'UserTable'     => 'dlth_data_home_users',
+    'UserTable' => 'dlth_data_home_users',
 ];

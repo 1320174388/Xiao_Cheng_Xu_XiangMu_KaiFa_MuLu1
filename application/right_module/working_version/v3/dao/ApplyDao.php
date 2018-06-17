@@ -20,7 +20,7 @@ class ApplyDao implements ApplyInterface
      * 输  出 : [ 'msg'=>'error'  , 'data'=>false ]
      * 创  建 : 2018/06/16 14:32
      */
-    public function applySelect($token)
+    public function applySelect($token='')
     {
         // 获取用户数据
         if( $token == '' ){
@@ -67,10 +67,14 @@ class ApplyDao implements ApplyInterface
      * 名  称 : applyDelete()
      * 功  能 : 声明：删除管理员申请表用户数据
      * 输  入 : (string) $token => '项目小程序用户标识';
-     * 输  出 :
+     * 输  出 : [ 'msg'=>'success', 'data'=>true ]
      * 创  建 : 2018/06/16 14:32
      */
-    public function applyDelete($token){
-
+    public function applyDelete($token)
+    {
+        // 删除管理员申请数据
+        $res = ApplyModel::get($token)->delete();
+        // 判断是否删除成功
+        if($res)return returnData('success',true);
     }
 }

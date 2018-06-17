@@ -37,14 +37,25 @@ class AdminDao implements AdminInterface
     /**
      * 名  称 : adminCreate()
      * 功  能 : 声明：添加管理员用户数据
-     * 输  入 : (string) $token => '项目小程序用户标识';
+     * 输  入 : (object) $applyInfo => '管理员申请数据对象';
      * 输  出 : [ 'msg'=>'success', 'data'=>$user ]
      * 输  出 : [ 'msg'=>'empty'  , 'data'=>false ]
      * 创  建 : 2018/06/16 13:43
      */
-    public function adminCreate($token)
+    public function adminCreate($applyInfo)
     {
-
+        // 实例化管理员数据模型
+        $adminModel = new AdminModel;
+        // 处理数据
+        $adminModel->admin_token = $applyInfo['apply_token'];
+        $adminModel->admin_name  = $applyInfo['apply_name'];
+        $adminModel->admin_phone = $applyInfo['apply_phone'];
+        $adminModel->admin_time  = $applyInfo['apply_time'];
+        // 写入数据
+        $res = $adminModel->save();
+        if(!$res)return returnData('error');
+        // 返回数据
+        return returnData('success',$applyInfo);
     }
 
     /**

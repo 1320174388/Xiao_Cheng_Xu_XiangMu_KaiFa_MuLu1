@@ -16,7 +16,6 @@ class RightService
     /**
      * 名  称 : rightApply()
      * 功  能 : 执行用户申请管理员操作
-     * 变  量 : --------------------------------------
      * 输  入 : (string) $token => '用户标识';
      * 输  入 : (string) $name  => '用户名称';
      * 输  入 : (string) $phone => '用户电话';
@@ -32,43 +31,59 @@ class RightService
 
         // 查看申请表是否有当先用户信息
         $result = $applyInfo->applySelect($token);
-
-        // 判断是否有数据
-        if($result['msg']=='success'){
-            return returnData('error',$result);
-        }
+        if($result['msg']=='success') return returnData('error');
 
         // 查看管理员表是否有当前用户信息
         $user = $adminInfo->adminSelect($token);
-
-        // 判断是否有数据
-        if($user['msg']=='success'){
-            return returnData('error',$user);
-        }
+        if($user['msg']=='success') return returnData('error');
 
         // 添加管理员申请数据库信息
         $info = $applyInfo->applyCreate($token,$name,$phone);
-
-        // 验证数据层返回数据
-        if($info['msg']=='error'){
-            return returnData('error');
-        }
+        if($info['msg']=='error') return returnData('error');
 
         // 返回数据
         return returnData('success',$info['data']);
     }
 
     /**
-     * 名  称 : applyDataList()
+     * 名  称 : applyData()
      * 功  能 : 获取所有申请成为管理员的用户信息
-     * 变  量 : --------------------------------------
-     * 输  入 : --------------------------------------
-     * 输  出 : [ 'msg'=>'success' , 'data'=>$info['data'] ]
+     * 输  入 : (string) $token => '用户标识';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
      * 输  出 : [ 'msg'=>'error'   , 'data'=>false ]
      * 创  建 : 2018/06/17 06:17
      */
-    public function applyDataList()
+    public function applyData($token='')
     {
+        // 获取管理员数据
+        $data = (new ApplyDao)->applySelect($token);
+        // 判断是否有数据
+        if($data['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$data['data']);
+    }
 
+    /**
+     * 名  称 : rightAdmin()
+     * 功  能 : 执行审核管理员操作
+     * 输  入 : (string) $token => '用户标识';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
+     * 创  建 : 2018/06/17 21:57
+     */
+    public function rightAdmin($token)
+    {
+        // 获取管理员数据
+        $data = (new ApplyDao)->applySelect($token);
+        if($data['msg']=='error') return returnData('error','没有申请');
+
+        // 删除管理员申请数据
+        (new ApplyDao)->applyDelete($token);
+
+        // 添加管理员
+        $admin = (new AdminDao)->adminCreate($data['data']);
+        if($admin['msg']=='error') return returnData('error','审核失败');
+
+        // 返回数据格式
+        return returnData('success',true);
     }
 }

@@ -18,7 +18,7 @@ class LoginDao implements LoginInterface
      * 变  量 : --------------------------------------
      * 输  入 : (string) $openid => '小程序用户openid';
      * 输  出 : [ 'msg' => 'success', 'data' => $userInfo ]
-     * 输  出 : [ 'msg' => 'empty',   'data' => false ]
+     * 输  出 : [ 'msg' => 'error',   'data' => false ]
      * 创  建 : 2018/06/12 21:48
      */
     public function loginSelect($openid)
@@ -31,7 +31,7 @@ class LoginDao implements LoginInterface
         $user = $userModel->where('user_openid',$openid)->find();
         // 验证数据
         if(!$user){
-            return returnData('empty');
+            return returnData('error');
         }
         // 返回数据格式
         return returnData('success',$user);

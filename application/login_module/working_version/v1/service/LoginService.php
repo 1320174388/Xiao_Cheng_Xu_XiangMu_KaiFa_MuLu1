@@ -62,7 +62,7 @@ class LoginService
         $userInfo = (new LoginDao())->loginSelect($openid);
 
         // 验证返回数据格式
-        if( $userInfo['msg']=='empty' ) {
+        if( $userInfo['msg']=='error' ) {
             // 添加用户openid到数据库
             $res = (new LoginDao)->loginCreate($openid);
             // 验证数据格式

@@ -12,4 +12,6 @@ return [
     'ApplyTable' => 'dlth_data_admin_applys',
     // 管理员表
     'AdminTable' => 'dlth_data_admin_lists',
+    // 权限表
+    'RightTable' => 'dlth_data_right_lists',
 ];

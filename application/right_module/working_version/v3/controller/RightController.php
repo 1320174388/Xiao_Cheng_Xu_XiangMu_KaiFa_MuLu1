@@ -79,4 +79,27 @@ class RightController extends Controller
         // 返回接口响应数据
         return returnResponse(0,'设置成功',$admin['data']);
     }
+    /**
+     * 名  称 : rightAddRoute()
+     * 功  能 : 执行添加权限操作
+     * 变  量 : --------------------------------------
+     * 输  入 : (string) $rightName  => '权限名称';
+     * 输  入 : (string) $rightRoute => '权限路由';
+     * 输  出 : {"errNum":0,"retMsg":"添加成功","retData":true}
+     * 创  建 : 2018/06/18 09:43
+     */
+    public function rightAddRoute(Request $request)
+    {
+        // 获取传值
+        $rightName  = $request->post('rightName');
+        $rightRoute = $request->post('rightRoute');
+        // 验证数据
+        if(!$rightName)  return returnResponse(1,'请输入权限名称');
+        if(!$rightRoute) return returnResponse(2,'请输入权限路由');
+        // 引入Service逻辑层代码
+        $res = (new RightService())->rightAdd($rightName,$rightRoute);
+        if($res['msg']=='error') return returnResponse(3,'添加失败');
+        // 返回数据
+        return returnResponse(0,'添加成功',true);
+    }
 }

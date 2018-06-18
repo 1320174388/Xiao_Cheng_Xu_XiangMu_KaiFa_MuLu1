@@ -8,8 +8,10 @@
  *  历史记录 :  -----------------------
  */
 namespace app\right_module\working_version\v3\service;
+use \think\Db;
 use app\right_module\working_version\v3\dao\ApplyDao;
 use app\right_module\working_version\v3\dao\AdminDao;
+use app\right_module\working_version\v3\dao\RightDao;
 
 class RightService
 {
@@ -76,13 +78,38 @@ class RightService
         $data = (new ApplyDao)->applySelect($token);
         if($data['msg']=='error') return returnData('error','没有申请');
 
-        // 删除管理员申请数据
-        (new ApplyDao)->applyDelete($token);
-
+        // 启动事务
+        Db::startTrans();
+        try {
+            // 删除管理员申请数据
+            (new ApplyDao)->applyDelete($token);
+            // 添加管理员
+            $admin = (new AdminDao)->adminCreate($data['data']);
+            // 提交事务
+            Db::commit();
+            // 返回数据格式
+            return returnData('success',true);
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback();
+            // 返回数据格式
+            if($admin['msg']=='error') return returnData('error','审核失败');
+        }
+    }
+    /**
+     * 名  称 : rightAdd()
+     * 功  能 : 执行添加管理员信息逻辑
+     * 输  入 : (string) $rightName  => '权限名称';
+     * 输  入 : (string) $rightRoute => '权限路由';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
+     * 创  建 : 2018/06/18 06:58
+     */
+    public function rightAdd($rightName,$rightRoute)
+    {
         // 添加管理员
-        $admin = (new AdminDao)->adminCreate($data['data']);
-        if($admin['msg']=='error') return returnData('error','审核失败');
-
+        $res = (new RightDao)->RightCreate($rightName,$rightRoute);
+        // 验证是否添加成功
+        if($res['msg']=='error') return returnData('error');
         // 返回数据格式
         return returnData('success',true);
     }

@@ -22,7 +22,29 @@ class RightDao implements RightInterface
      */
     public function RightSelect()
     {
+        // 获取所有权限信息
+        $RightList = RightModel::all();
+        // 验证是否有权限
+        if(!$RightList) return returnData('error');
+        // 返回数据
+        return returnData('success',$RightList);
+    }
 
+    /**
+     * 名  称 : RightNameSelest()
+     * 功  能 : 声明：获取权限名称对应数据
+     * 输  入 : (string) $rightName  => '权限名称';
+     * 输  出 : [ 'msg'=>'success', 'data'=>$user ]
+     * 创  建 : 2018/06/18 12:40
+     */
+    public function RightNameSelest($rightName)
+    {
+        // 获取所有权限信息
+        $right = RightModel::where('right_name', $rightName)->find();
+        // 验证是否有权限
+        if(!$right) return returnData('error');
+        // 返回数据
+        return returnData('success',$right);
     }
 
     /**
@@ -55,9 +77,18 @@ class RightDao implements RightInterface
      * 输  出 : [ 'msg'=>'success', 'data'=>$user ]
      * 创  建 : 2018/06/18 12:40
      */
-    public function RightUpdate($index)
+    public function RightUpdate($index,$rightName,$rightRoute)
     {
-
+        // 实例化模型
+        $rightModel = RightModel::where('right_index', $index)->find();
+        // 处理数据
+        $rightModel->right_name  = $rightName;
+        $rightModel->right_route = $rightRoute;
+        // 保存数据
+        $res = $rightModel->save();
+        if(!$res) return returnData('error');
+        // 返回数据
+        return returnData('success',true);
     }
 
     /**
@@ -69,6 +100,11 @@ class RightDao implements RightInterface
      */
     public function RightDelete($index)
     {
-
+        // 删除权限列表数据
+        $res = RightModel::destroy(['right_index' => $index]);
+        // 验证数据是否删除成功
+        if(!$res) return returnData('error');
+        // 返回数据
+        return returnData('success',true);
     }
 }

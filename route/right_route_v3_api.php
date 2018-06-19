@@ -16,7 +16,7 @@
  */
 Route::post(
     'v3/right_module/apply_init',
-    'right_module/v3.controller.RightController/applyInit'
+    'right_module/v3.controller.ApplyController/applyInit'
 );
 /**
  * 传值方式：GET
@@ -24,7 +24,7 @@ Route::post(
  */
 Route::get(
     'v3/right_module/apply_list',
-    'right_module/v3.controller.RightController/applyList'
+    'right_module/v3.controller.ApplyController/applyList'
 );
 /**
  * 传值方式：POST
@@ -32,7 +32,7 @@ Route::get(
  */
 Route::post(
     'v3/right_module/admin_init/:applyToken',
-    'right_module/v3.controller.RightController/adminInit'
+    'right_module/v3.controller.AdminController/adminInit'
 );
 /**
  * 传值方式：POST
@@ -41,4 +41,31 @@ Route::post(
 Route::post(
     'v3/right_module/right_route',
     'right_module/v3.controller.RightController/rightAddRoute'
+);
+
+/**
+ * 传值方式：GET
+ * 路由功能：获取所有权限操作
+ */
+Route::get(
+    'v3/right_module/right_route',
+    'right_module/v3.controller.RightController/rightGetRoute'
+);
+
+/**
+ * 传值方式：PUT
+ * 路由功能：更新index对应权限
+ */
+Route::put(
+    'v3/right_module/right_route/:index',
+    'right_module/v3.controller.RightController/rightEditRoute'
+);
+
+/**
+ * 传值方式：DELETE
+ * 路由功能：删除index对应权限
+ */
+Route::delete(
+    'v3/right_module/right_route/:index',
+    'right_module/v3.controller.RightController/rightDelRoute'
 );

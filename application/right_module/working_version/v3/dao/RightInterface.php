@@ -31,9 +31,11 @@ interface RightInterface{
      * 名  称 : RightUpdate()
      * 功  能 : 声明：修改权限列表数据
      * 输  入 : (string) $index => '权限列表主键';
+     * 输  入 : (string) $rightName  => '权限名称';
+     * 输  入 : (string) $rightRoute => '权限路由';
      * 创  建 : 2018/06/18 12:40
      */
-    public function RightUpdate($index);
+    public function RightUpdate($index,$rightName,$rightRoute);
 
     /**
      * 名  称 : RightDelete()

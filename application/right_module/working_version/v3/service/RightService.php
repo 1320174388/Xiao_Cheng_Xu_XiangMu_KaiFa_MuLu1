@@ -4,101 +4,17 @@
  *  文件名称 :  RightService.php
  *  创 建 者 :  Shi Guang Yu
  *  创建日期 :  2018/06/12 17:24
- *  文件描述 :  处理权限管理的业务逻辑
+ *  文件描述 :  处理权限的业务逻辑
  *  历史记录 :  -----------------------
  */
 namespace app\right_module\working_version\v3\service;
-use \think\Db;
-use app\right_module\working_version\v3\dao\ApplyDao;
-use app\right_module\working_version\v3\dao\AdminDao;
 use app\right_module\working_version\v3\dao\RightDao;
 
 class RightService
 {
     /**
-     * 名  称 : rightApply()
-     * 功  能 : 执行用户申请管理员操作
-     * 输  入 : (string) $token => '用户标识';
-     * 输  入 : (string) $name  => '用户名称';
-     * 输  入 : (string) $phone => '用户电话';
-     * 输  出 : [ 'msg'=>'success' , 'data'=>$info['data'] ]
-     * 输  出 : [ 'msg'=>'error'   , 'data'=>false ]
-     * 创  建 : 2018/06/16 21:50
-     */
-    public function rightApply($token,$name,$phone)
-    {
-        // 引入RightDao层数据结构
-        $applyInfo = new ApplyDao();
-        $adminInfo = new AdminDao();
-
-        // 查看申请表是否有当先用户信息
-        $result = $applyInfo->applySelect($token);
-        if($result['msg']=='success') return returnData('error');
-
-        // 查看管理员表是否有当前用户信息
-        $user = $adminInfo->adminSelect($token);
-        if($user['msg']=='success') return returnData('error');
-
-        // 添加管理员申请数据库信息
-        $info = $applyInfo->applyCreate($token,$name,$phone);
-        if($info['msg']=='error') return returnData('error');
-
-        // 返回数据
-        return returnData('success',$info['data']);
-    }
-
-    /**
-     * 名  称 : applyData()
-     * 功  能 : 获取所有申请成为管理员的用户信息
-     * 输  入 : (string) $token => '用户标识';
-     * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
-     * 输  出 : [ 'msg'=>'error'   , 'data'=>false ]
-     * 创  建 : 2018/06/17 06:17
-     */
-    public function applyData($token='')
-    {
-        // 获取管理员数据
-        $data = (new ApplyDao)->applySelect($token);
-        // 判断是否有数据
-        if($data['msg']=='error') return returnData('error');
-        // 返回数据格式
-        return returnData('success',$data['data']);
-    }
-
-    /**
-     * 名  称 : rightAdmin()
-     * 功  能 : 执行审核管理员操作
-     * 输  入 : (string) $token => '用户标识';
-     * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
-     * 创  建 : 2018/06/17 21:57
-     */
-    public function rightAdmin($token)
-    {
-        // 获取管理员数据
-        $data = (new ApplyDao)->applySelect($token);
-        if($data['msg']=='error') return returnData('error','没有申请');
-
-        // 启动事务
-        Db::startTrans();
-        try {
-            // 删除管理员申请数据
-            (new ApplyDao)->applyDelete($token);
-            // 添加管理员
-            $admin = (new AdminDao)->adminCreate($data['data']);
-            // 提交事务
-            Db::commit();
-            // 返回数据格式
-            return returnData('success',true);
-        } catch (\Exception $e) {
-            // 回滚事务
-            Db::rollback();
-            // 返回数据格式
-            if($admin['msg']=='error') return returnData('error','审核失败');
-        }
-    }
-    /**
      * 名  称 : rightAdd()
-     * 功  能 : 执行添加管理员信息逻辑
+     * 功  能 : 执行添加权限信息逻辑
      * 输  入 : (string) $rightName  => '权限名称';
      * 输  入 : (string) $rightRoute => '权限路由';
      * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
@@ -106,9 +22,66 @@ class RightService
      */
     public function rightAdd($rightName,$rightRoute)
     {
-        // 添加管理员
+        // 获取当前$rightName权限
+        $data = (new RightDao)->RightNameSelest($rightName);
+        // 验证是否有数据
+        if($data['msg']=='success') return returnData('error','权限已存在');
+        // 添加权限
         $res = (new RightDao)->RightCreate($rightName,$rightRoute);
         // 验证是否添加成功
+        if($res['msg']=='error') return returnData('error','添加失败');
+        // 返回数据格式
+        return returnData('success',true);
+    }
+
+    /**
+     * 名  称 : rightGet()
+     * 功  能 : 获取所有权限信息逻辑
+     * 输  入 : --------------------------------------
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$res['data'] ]
+     * 创  建 : 2018/06/18 06:58
+     */
+    public function rightGet()
+    {
+        // 获取权限信息
+        $res = (new RightDao)->RightSelect();
+        // 是否获取到数据
+        if($res['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$res['data']);
+    }
+
+    /**
+     * 名  称 : rightDel()
+     * 功  能 : 删除权限信息逻辑
+     * 输  入 : (string) $index => '权限标识';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$res['data'] ]
+     * 创  建 : 2018/06/18 06:58
+     */
+    public function rightDel($index)
+    {
+        // 删除要删除的权限数据
+        $res = (new RightDao)->RightDelete($index);
+        // 是否删除成功
+        if($res['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',true);
+    }
+
+    /**
+     * 名  称 : rightEdit()
+     * 功  能 : 更新权限信息逻辑
+     * 输  入 : (string) $index      => '权限标识';
+     * 输  入 : (string) $rightName  => '权限名称';
+     * 输  入 : (string) $rightRoute => '权限路由';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$res['data'] ]
+     * 创  建 : 2018/06/18 06:58
+     */
+    public function rightEdit($index,$rightName,$rightRoute)
+    {
+        // 更新$index的权限数据
+        $res = (new RightDao)->RightUpdate($index,$rightName,$rightRoute);
+        // 是否修改成功
         if($res['msg']=='error') return returnData('error');
         // 返回数据格式
         return returnData('success',true);

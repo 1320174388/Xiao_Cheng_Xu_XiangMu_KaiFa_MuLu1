@@ -22,10 +22,11 @@ interface AdminInterface{
     /**
      * 名  称 : adminCreate()
      * 功  能 : 声明：添加管理员用户数据
-     * 输  入 : (string) $token => '项目小程序用户标识';
+     * 输  入 : (object) $applyInfo => '管理员申请数据对象';
+     * 输  入 : (string) $roleArr   => '权限数组';
      * 创  建 : 2018/06/16 13:43
      */
-    public function adminCreate($token);
+    public function adminCreate($applyInfo,$roletArr);
 
     /**
      * 名  称 : adminUpdate()

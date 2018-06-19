@@ -7,65 +7,91 @@
  *  文件描述 :  权限模块路由地址
  *  历史记录 :  -----------------------
  */
-// +--------------------------------
-// + :权限管理定义路由
-// +--------------------------------
-/**
- * 传值方式：POST
- * 路由功能：执行用户申请管理员功能
- */
+
+// +------------------------------------------------------
+// : 传值方式：POST 路由功能：执行用户申请管理员功能
+// +------------------------------------------------------
 Route::post(
     'v3/right_module/apply_init',
     'right_module/v3.controller.ApplyController/applyInit'
 );
-/**
- * 传值方式：GET
- * 路由功能：获取管理员申请表数据
- */
+
+// +------------------------------------------------------
+// : 传值方式：GET 路由功能：获取管理员申请表数据
+// +------------------------------------------------------
 Route::get(
     'v3/right_module/apply_list',
     'right_module/v3.controller.ApplyController/applyList'
 );
-/**
- * 传值方式：POST
- * 路由功能：执行添加管理员操作
- */
+
+// +------------------------------------------------------
+// : 传值方式：POST 路由功能：执行添加管理员操作
+// +------------------------------------------------------
 Route::post(
     'v3/right_module/admin_init/:applyToken',
     'right_module/v3.controller.AdminController/adminInit'
 );
-/**
- * 传值方式：POST
- * 路由功能：执行添加权限操作
- */
+
+// +------------------------------------------------------
+// : 传值方式：POST 路由功能：执行添加权限操作
+// +------------------------------------------------------
 Route::post(
     'v3/right_module/right_route',
     'right_module/v3.controller.RightController/rightAddRoute'
 );
 
-/**
- * 传值方式：GET
- * 路由功能：获取所有权限操作
- */
+// +------------------------------------------------------
+// : 传值方式：GET 路由功能：获取所有权限操作
+// +------------------------------------------------------
 Route::get(
     'v3/right_module/right_route',
     'right_module/v3.controller.RightController/rightGetRoute'
 );
 
-/**
- * 传值方式：PUT
- * 路由功能：更新index对应权限
- */
+// +------------------------------------------------------
+// : 传值方式：PUT 路由功能：更新index对应权限
+// +------------------------------------------------------
 Route::put(
     'v3/right_module/right_route/:index',
     'right_module/v3.controller.RightController/rightEditRoute'
 );
 
-/**
- * 传值方式：DELETE
- * 路由功能：删除index对应权限
- */
+// +------------------------------------------------------
+// : 传值方式：DELETE 路由功能：删除index对应权限
+// +------------------------------------------------------
 Route::delete(
     'v3/right_module/right_route/:index',
     'right_module/v3.controller.RightController/rightDelRoute'
+);
+
+// +------------------------------------------------------
+// : 传值方式：POST 路由功能：添加职位
+// +------------------------------------------------------
+Route::post(
+    'v3/right_module/role_route',
+    'right_module/v3.controller.RoleController/roleAdd'
+);
+
+// +------------------------------------------------------
+// : 传值方式：GET 路由功能：获取所有职位信息
+// +------------------------------------------------------
+Route::get(
+    'v3/right_module/role_route',
+    'right_module/v3.controller.RoleController/roleGet'
+);
+
+// +------------------------------------------------------
+// : 传值方式：PUT 路由功能：获取所有职位信息
+// +------------------------------------------------------
+Route::put(
+    'v3/right_module/role_route/:index',
+    'right_module/v3.controller.RoleController/roleEdit'
+);
+
+// +------------------------------------------------------
+// : 传值方式：DELETE 路由功能：删除职位信息
+// +------------------------------------------------------
+Route::delete(
+    'v3/right_module/role_route/:index',
+    'right_module/v3.controller.RoleController/roleDel'
 );

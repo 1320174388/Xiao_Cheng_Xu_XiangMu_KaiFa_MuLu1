@@ -21,9 +21,12 @@ interface RoleInterface{
     /**
      * 名  称 : RoleCreate()
      * 功  能 : 声明：添加职位列表数据
+     * 输  入 : (string) $roleName => '职位名称';
+     * 输  入 : (string) $roleInfo => '职位介绍';
+     * 输  入 : (string) $rightStr => '权限主键集合字符串，逗号隔开主键';
      * 创  建 : 2018/06/16 13:52
      */
-    public function RoleCreate();
+    public function RoleCreate($roleName,$roleInfo,$rightStr);
 
     /**
      * 名  称 : RoleUpdate()
@@ -31,7 +34,7 @@ interface RoleInterface{
      * 输  入 : (string) $index => '职位列表主键';
      * 创  建 : 2018/06/16 13:52
      */
-    public function RoleUpdate($index);
+    public function RoleUpdate($index,$roleName,$roleInfo,$rightStr);
 
     /**
      * 名  称 : RoleDelete()

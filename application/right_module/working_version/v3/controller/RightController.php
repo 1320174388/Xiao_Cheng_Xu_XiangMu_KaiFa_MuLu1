@@ -67,7 +67,7 @@ class RightController extends Controller
     {
         // 引入Service逻辑层代码
         $res = (new RightService())->rightDel($index);
-        if($res['msg']=='error') return returnResponse(1,'删除失败');
+        if($res['msg']=='error') return returnResponse(1,$res['data']);
         // 返回数据
         return returnResponse(0,'删除成功',$res['data']);
     }

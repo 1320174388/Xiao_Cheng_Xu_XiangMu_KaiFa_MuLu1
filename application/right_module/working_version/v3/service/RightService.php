@@ -63,7 +63,7 @@ class RightService
         // 删除要删除的权限数据
         $res = (new RightDao)->RightDelete($index);
         // 是否删除成功
-        if($res['msg']=='error') return returnData('error');
+        if($res['msg']=='error') return returnData('error',$res['data']);
         // 返回数据格式
         return returnData('success',true);
     }

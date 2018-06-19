@@ -100,10 +100,16 @@ class RightDao implements RightInterface
      */
     public function RightDelete($index)
     {
+        // 获取表明
+        $table = config('v3_tableName.RoleRight');
+        // 删除原关联
+        $dd = Db::table($table)->where('right_index',$index)->find();
+        // 验证数据
+        if($dd) return returnData('error','权限已被使用');
         // 删除权限列表数据
         $res = RightModel::destroy(['right_index' => $index]);
         // 验证数据是否删除成功
-        if(!$res) return returnData('error');
+        if(!$res) return returnData('error','权限删除失败');
         // 返回数据
         return returnData('success',true);
     }

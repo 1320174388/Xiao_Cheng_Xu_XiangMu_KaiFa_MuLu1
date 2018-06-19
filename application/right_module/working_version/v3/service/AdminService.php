@@ -17,12 +17,15 @@ class AdminService
     /**
      * 名  称 : rightAdmin()
      * 功  能 : 执行审核管理员操作
-     * 输  入 : (string) $token => '用户标识';
+     * 输  入 : (string) $token      => '用户标识';
+     * 输  入 : (string) $roleString => '职位标识字符串，逗号隔开';
      * 输  出 : [ 'msg'=>'success' , 'data'=>$list['data'] ]
      * 创  建 : 2018/06/17 21:57
      */
-    public function rightAdmin($token)
+    public function rightAdmin($token,$roleString)
     {
+        // 处理职位数据,将权限字符串数据转换为数组
+        $roletArr = explode(',',$roleString);
         // 获取管理员数据
         $data = (new ApplyDao)->applySelect($token);
         if($data['msg']=='error') return returnData('error','没有申请');
@@ -33,7 +36,7 @@ class AdminService
             // 删除管理员申请数据
             (new ApplyDao)->applyDelete($token);
             // 添加管理员
-            $admin = (new AdminDao)->adminCreate($data['data']);
+            $admin = (new AdminDao)->adminCreate($data['data'],$roletArr);
             // 提交事务
             Db::commit();
             // 返回数据格式

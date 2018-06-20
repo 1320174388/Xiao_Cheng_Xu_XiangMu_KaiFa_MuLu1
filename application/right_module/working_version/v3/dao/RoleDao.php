@@ -141,17 +141,23 @@ class RoleDao implements RoleInterface
      */
     public function RoleDelete($index)
     {
+        // 获取表明
+        $table = config('v3_tableName.AdminRole');
+        // 获取关联
+        $dd = Db::table($table)->where('role_index',$index)->find();
+        // 验证数据
+        if($dd) return returnData('error','职位已被使用');
         // 启动事务
         Db::startTrans();
         try {
             // 删除职位数据
             $role = RoleModel::get($index)->delete();
-            if(!$role) return  returnData('error');
+            if(!$role) return  returnData('error','删除失败');
             // 获取表明
             $table = config('v3_tableName.RoleRight');
             // 删除原关联
             $dd = Db::table($table)->where('role_index',$index)->delete();
-            if(!$dd) return  returnData('error');
+            if(!$dd) return  returnData('error','删除失败');
             Db::commit();
             // 返回数据格式
             return returnData('success',true);
@@ -159,7 +165,7 @@ class RoleDao implements RoleInterface
             // 回滚事务
             Db::rollback();
             // 验证数据
-            return returnData('error');
+            return returnData('error','删除失败');
         }
     }
 }

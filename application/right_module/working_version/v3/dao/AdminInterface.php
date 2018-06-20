@@ -32,9 +32,10 @@ interface AdminInterface{
      * 名  称 : adminUpdate()
      * 功  能 : 声明：修改管理员用户数据
      * 输  入 : (string) $token => '项目小程序用户标识';
+     * 输  入 : (string) $roletArr => '职位数组';
      * 创  建 : 2018/06/16 13:44
      */
-    public function adminUpdate($token);
+    public function adminUpdate($token,$roletArr);
 
     /**
      * 名  称 : adminDelete()

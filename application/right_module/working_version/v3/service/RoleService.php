@@ -88,10 +88,10 @@ class RoleService
      */
     public function delRole($index)
     {
-        // 获取对应职位名称数据
+        // 删除对应职位名称数据
         $res = (new RoleDao())->RoleDelete($index);
         // 验证是否删除
-        if($res['msg']=='error') return returnData('error');
+        if($res['msg']=='error') return returnData('error',$res['data']);
         // 返回数据
         return returnData('success',true);
     }

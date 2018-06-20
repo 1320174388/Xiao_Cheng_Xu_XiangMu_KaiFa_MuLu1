@@ -103,7 +103,7 @@ class RoleController extends Controller
         // 引入RoleService逻辑
         $res=(new RoleService)->delRole($index);
         // 验证返回数据
-        if($res['msg']=='error') return returnResponse(1,'删除失败');
+        if($res['msg']=='error')return returnResponse(1,$res['data']);
         // 返回数据
         return returnResponse(0,'删除成功',true);
     }

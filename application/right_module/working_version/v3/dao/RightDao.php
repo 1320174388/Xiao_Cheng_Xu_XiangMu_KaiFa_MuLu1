@@ -10,6 +10,7 @@
 namespace app\right_module\working_version\v3\dao;
 use app\right_module\working_version\v3\model\RightModel;
 use app\right_module\working_version\v3\library\RightLibrary;
+use think\Db;
 
 class RightDao implements RightInterface
 {
@@ -102,7 +103,7 @@ class RightDao implements RightInterface
     {
         // 获取表明
         $table = config('v3_tableName.RoleRight');
-        // 删除原关联
+        // 获取关联
         $dd = Db::table($table)->where('right_index',$index)->find();
         // 验证数据
         if($dd) return returnData('error','权限已被使用');

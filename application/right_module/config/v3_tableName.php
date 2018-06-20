@@ -11,6 +11,8 @@
 // : v3_版本:数据库表模型对应表明配置
 // +------------------------------------------------------
 return [
+    // 用户表
+    'UserTable' => 'dlth_data_home_users',
     // 管理员申请表
     'ApplyTable' => 'dlth_data_admin_applys',
     // 管理员表

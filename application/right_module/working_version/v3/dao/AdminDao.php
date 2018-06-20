@@ -8,7 +8,9 @@
  *  历史记录 :  -----------------------
  */
 namespace app\right_module\working_version\v3\dao;
+use app\right_module\working_version\v3\model\UserModel;
 use app\right_module\working_version\v3\model\AdminModel;
+use app\right_module\working_version\v3\model\RightModel;
 use think\Db;
 
 class AdminDao implements AdminInterface
@@ -150,5 +152,58 @@ class AdminDao implements AdminInterface
             return returnData('error');
         }
 
+    }
+
+    /**
+     * 名  称 : adminRoute()
+     * 功  能 : 声明：获取管理员权限
+     * 输  入 : (string) $token => '项目小程序用户标识';
+     * 输  出 : [ 'msg'=>'success', 'data'=>true ]
+     * 创  建 : 2018/06/21 00:00
+     */
+    public function adminRoute($token)
+    {
+        // 获取最高权限的第一个小程序用户
+        $user  = UserModel::get(1);
+        // 判断是否有权限
+        if ($token==$user['user_token']) {
+            // 获取最高权限
+            $arr = [];
+            $arr[] = config('v3_rightConfig.rightRoute');
+            // 获取其他权限
+            $rightArr  = RightModel::all()->toArray();
+            // 合并所有权限
+            $newArr = array_merge($arr,$rightArr);
+            // 返回数据
+            return returnData('success',$newArr);
+        }
+        // 获取管理员可管理的所有权限
+        $config = config('v3_tableName.');
+        $arr = Db::field(
+            $config['RightTable'].'.right_index,'.
+            $config['RightTable'].'.right_name,'.
+            $config['RightTable'].'.right_route'
+        )
+            ->table($config['AdminTable'])
+            ->join ($config['AdminRole'],
+                $config['AdminTable'].'.admin_token = '.
+                $config['AdminRole'].'.admin_token')
+            ->join ($config['RoleTable'],
+                $config['AdminRole'].'.role_index = '.
+                $config['RoleTable'].'.role_index')
+            ->join ($config['RoleRight'],
+                $config['RoleTable'].'.role_index = '.
+                $config['RoleRight'].'.role_index')
+            ->join ($config['RightTable'],
+                $config['RoleRight'].'.right_index = '.
+                $config['RightTable'].'.right_index')
+            ->where($config['AdminTable'].'.admin_token','=',$token)
+            ->select();
+        // 处理数据
+        foreach ($arr as $k=>$v){ $arr[$k] = serialize($v); }
+        $arr = array_unique($arr);
+        foreach ($arr as $k=>$v){ $arr[$k] = unserialize($v); }
+        // 返回数据
+        return returnData('success',$arr);
     }
 }

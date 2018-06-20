@@ -56,6 +56,40 @@ class AdminController extends Controller
     }
 
     /**
+     * 名  称 : adminGetInif()
+     * 功  能 : 获取单个管理员数据
+     * 输  入 : (string) $token => '用户标识';
+     * 输  出 : {"errNum":0,"retMsg":"请求成功","retData":true}
+     * 创  建 : 2018/06/20 23:43
+     */
+    public function adminGetInif($token)
+    {
+        // 获取单个管理员数据
+        $res = (new AdminService())->getUserAdmin($token);
+        // 验证数据逻辑
+        if($res['msg']=='error') return returnResponse(1,'请求失败');
+        // 返回数据格式
+        return returnResponse(0,'请求成功',true);
+    }
+
+    /**
+     * 名  称 : adminGetRoute()
+     * 功  能 : 获取管理员可管理的模块信息
+     * 输  入 : (string) $token => '用户标识';
+     * 输  出 : {"errNum":0,"retMsg":"请求成功","retData":"数据"}
+     * 创  建 : 2018/06/20 23:56
+     */
+    public function adminGetRoute($token)
+    {
+        // 获取管理员可管理的模块信息
+        $res = (new AdminService())->getAdminRoute($token);
+        // 验证数据逻辑
+        if($res['msg']=='error') return returnResponse(1,'请求失败');
+        // 返回数据格式
+        return returnResponse(0,'请求成功',$res['data']);
+    }
+
+    /**
      * 名  称 : adminDel()
      * 功  能 : 删除管理员操作
      * 变  量 : --------------------------------------

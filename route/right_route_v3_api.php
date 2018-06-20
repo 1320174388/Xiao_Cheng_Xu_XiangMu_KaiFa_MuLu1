@@ -20,13 +20,29 @@ Route::get(
 // : 传值方式：POST 路由功能：执行用户申请管理员功能
 // +------------------------------------------------------
 Route::post(
-    'apply_init','right_module/v3.controller.ApplyController/applyInit'
+    'v3/right_module/apply_init',
+    'right_module/v3.controller.ApplyController/applyInit'
+);
+
+// +------------------------------------------------------
+// : 传值方式：GET 路由功能：判断用户是不是管理员
+// +------------------------------------------------------
+Route::get(
+    'v3/right_module/is_admin/:token',
+    'right_module/v3.controller.AdminController/adminGetInif'
 );
 
 // +------------------------------------------------------
 // : 路由分组：v3/right_module/ 中间件：Right_v3_IsAdmin
 // +------------------------------------------------------
 Route::group('v3/right_module/', function(){
+    /**
+     * 传值方式：GET 路由功能：获取管理员可管理权限
+     */
+    Route::get(
+        'admin_right/:token',
+        'right_module/v3.controller.AdminController/adminGetRoute'
+    );
     /**
      * 传值方式：GET 路由功能：获取管理员申请表数据
      */

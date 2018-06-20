@@ -45,4 +45,12 @@ interface AdminInterface{
      */
     public function adminDelete($token);
 
+    /**
+     * 名  称 : adminRoute()
+     * 功  能 : 声明：获取管理员权限
+     * 输  入 : (string) $token => '项目小程序用户标识';
+     * 创  建 : 2018/06/16 13:45
+     */
+    public function adminRoute($token);
+
 }

@@ -67,6 +67,40 @@ class AdminService
     }
 
     /**
+     * 名  称 : getUserAdmin()
+     * 功  能 : 获取单个管理员数据
+     * 输  入 : string) $token => '用户标识';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$info['data'] ]
+     * 创  建 : 2018/06/20 23:44
+     */
+    public function getUserAdmin($token)
+    {
+        // 获取管理员数据
+        $info = (new AdminDao())->adminSelect($token);
+        // 验证数据格式
+        if($info['msg']=='error') return  returnData('error');
+        // 返回数据
+        return returnData('success',$info['data']);
+    }
+
+    /**
+     * 名  称 : getAdminRoute()
+     * 功  能 : 获取管理员可管理的模块信息
+     * 输  入 : string) $token => '用户标识';
+     * 输  出 : [ 'msg'=>'success' , 'data'=>$route['data'] ]
+     * 创  建 : 2018/06/20 23:44
+     */
+    public function getAdminRoute($token)
+    {
+        // 获取管理员权限数据
+        $route = (new AdminDao())->adminRoute($token);
+        // 验证数据格式
+        if($route['msg']=='error') return  returnData('error');
+        // 返回数据
+        return returnData('success',$route['data']);
+    }
+
+    /**
      * 名  称 : delAdmin()
      * 功  能 : 执行删除管理员操作
      * 输  入 : (string) $token => '用户标识';

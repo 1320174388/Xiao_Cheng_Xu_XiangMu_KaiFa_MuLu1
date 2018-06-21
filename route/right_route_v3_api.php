@@ -129,7 +129,7 @@ Route::group('v3/right_module/', function(){
      * 传值方式：DELETE 路由功能：删除职位信息
      */
     Route::delete(
-        'role_route/:index',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleDel'
     );
 })->middleware('Right_v3_IsAdmin');

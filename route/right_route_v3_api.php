@@ -87,7 +87,7 @@ Route::group('v3/right_module/', function(){
      * 传值方式：GET 路由功能：获取所有权限操作
      */
     Route::get(
-        'right_route',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightGetRoute'
     );
     /**

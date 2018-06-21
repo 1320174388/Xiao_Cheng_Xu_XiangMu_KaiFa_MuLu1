@@ -80,7 +80,7 @@ class AdminService
         $user = (new UserDao())->UserSelect();
         // 验证数据
         if($user['msg']=='success'){
-            if($token==$user->user_token)
+            if($token==$user['user_token'])
             return returnData('success',$user['data']);
         }
         // 获取管理员数据

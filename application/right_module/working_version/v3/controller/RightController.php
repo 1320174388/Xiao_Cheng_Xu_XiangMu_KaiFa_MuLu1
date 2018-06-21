@@ -89,7 +89,7 @@ class RightController extends Controller
     public function rightEditRoute(Request $request)
     {
         // 获取传值
-        $index      = $request->put('index ');
+        $index      = $request->put('index');
         $rightName  = $request->put('rightName');
         $rightRoute = $request->put('rightRoute');
         // 验证数据

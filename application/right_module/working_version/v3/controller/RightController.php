@@ -66,7 +66,7 @@ class RightController extends Controller
     public function rightDelRoute(Request $request)
     {
         // 获取传值
-        $index = $request->put('index ');
+        $index = $request->put('index');
         // 验证数据
         if( !$index ) return returnResponse(1,'请输入权限标识');
         // 引入Service逻辑层代码

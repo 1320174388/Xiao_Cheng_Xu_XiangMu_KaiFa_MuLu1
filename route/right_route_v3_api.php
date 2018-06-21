@@ -119,10 +119,10 @@ Route::group('v3/right_module/', function(){
         'right_module/v3.controller.RoleController/roleGet'
     );
     /**
-     * 传值方式：PUT 路由功能：获取所有职位信息
+     * 传值方式：PUT 路由功能：修改职位信息
      */
     Route::put(
-        'role_route/:index',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleEdit'
     );
     /**

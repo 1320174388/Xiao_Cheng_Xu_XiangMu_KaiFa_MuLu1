@@ -60,7 +60,7 @@ Route::group('v3/right_module/', function(){
      * 传值方式：GET 路由功能：获取所有管理员数据
      */
     Route::get(
-        'admin_route','right_module/v3.controller.AdminController/adminGet'
+        'admin_route/:token','right_module/v3.controller.AdminController/adminGet'
     );
     /**
      * 传值方式：PUT 路由功能：执行修改管理员职位

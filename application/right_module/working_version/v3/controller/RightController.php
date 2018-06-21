@@ -63,8 +63,12 @@ class RightController extends Controller
      * 输  出 : {"errNum":0,"retMsg":"删除成功","retData":true}
      * 创  建 : 2018/06/19 13:51
      */
-    public function rightDelRoute($index)
+    public function rightDelRoute(Request $request)
     {
+        // 获取传值
+        $index = $request->put('index ');
+        // 验证数据
+        if( !$index ) return returnResponse(1,'请输入权限标识');
         // 引入Service逻辑层代码
         $res = (new RightService())->rightDel($index);
         if($res['msg']=='error') return returnResponse(1,$res['data']);

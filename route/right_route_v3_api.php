@@ -98,10 +98,10 @@ Route::group('v3/right_module/', function(){
         'right_module/v3.controller.RightController/rightEditRoute'
     );
     /**
-     * 传值方式：DELETE 路由功能：删除index对应权限
+     * 传值方式：DELETE 路由功能：删除权限操作
      */
     Route::delete(
-        'right_route/:index',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightDelRoute'
     );
     /**

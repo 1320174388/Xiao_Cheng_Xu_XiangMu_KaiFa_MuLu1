@@ -80,7 +80,7 @@ Route::group('v3/right_module/', function(){
      * 传值方式：POST 路由功能：执行添加权限操作
      */
     Route::post(
-        'right_route',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightAddRoute'
     );
     /**

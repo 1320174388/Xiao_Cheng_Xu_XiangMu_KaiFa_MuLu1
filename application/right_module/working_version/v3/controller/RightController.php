@@ -82,9 +82,10 @@ class RightController extends Controller
      * 输  出 : {"errNum":0,"retMsg":"更新成功","retData":true}
      * 创  建 : 2018/06/19 13:51
      */
-    public function rightEditRoute($index,Request $request)
+    public function rightEditRoute(Request $request)
     {
         // 获取传值
+        $index      = $request->put('index ');
         $rightName  = $request->put('rightName');
         $rightRoute = $request->put('rightRoute');
         // 验证数据

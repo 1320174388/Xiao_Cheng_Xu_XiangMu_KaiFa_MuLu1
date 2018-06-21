@@ -91,10 +91,10 @@ Route::group('v3/right_module/', function(){
         'right_module/v3.controller.RightController/rightGetRoute'
     );
     /**
-     * 传值方式：PUT 路由功能：更新index对应权限
+     * 传值方式：PUT 路由功能：更新权限操作
      */
     Route::put(
-        'right_route/:index',
+        'right_route/:token',
         'right_module/v3.controller.RightController/rightEditRoute'
     );
     /**

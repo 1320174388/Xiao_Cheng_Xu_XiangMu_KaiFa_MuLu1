@@ -115,7 +115,7 @@ Route::group('v3/right_module/', function(){
      * 传值方式：GET 路由功能：获取所有职位信息
      */
     Route::get(
-        'role_route',
+        'role_route/:token',
         'right_module/v3.controller.RoleController/roleGet'
     );
     /**

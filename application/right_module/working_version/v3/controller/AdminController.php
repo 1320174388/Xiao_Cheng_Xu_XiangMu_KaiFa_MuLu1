@@ -124,7 +124,7 @@ class AdminController extends Controller
         $adminToken = $request->put('adminToken');
         $roleString = $request->put('roleString');
         // 验证数据
-        if(!$roleString) return returnResponse(1,'请选择职位');
+        if(!$adminToken) return returnResponse(1,'请发送标识');
         if(!$roleString) return returnResponse(1,'请选择职位');
         // 引入Service逻辑层数据
         $admin = (new AdminService())->editRight($adminToken,$roleString);

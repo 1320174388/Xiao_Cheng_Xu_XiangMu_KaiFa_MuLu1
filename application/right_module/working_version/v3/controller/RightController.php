@@ -89,6 +89,7 @@ class RightController extends Controller
         $rightName  = $request->put('rightName');
         $rightRoute = $request->put('rightRoute');
         // 验证数据
+        if( !$index )    return returnResponse(1,'请输入权限标识');
         if(!$rightName)  return returnResponse(1,'请输入权限名称');
         if(!$rightRoute) return returnResponse(2,'请输入权限路由');
         // 引入Service逻辑层代码

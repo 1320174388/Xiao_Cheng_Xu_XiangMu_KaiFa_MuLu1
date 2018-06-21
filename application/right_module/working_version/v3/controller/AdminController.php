@@ -23,11 +23,13 @@ class AdminController extends Controller
      * 输  出 : {"errNum":0,"retMsg":"设置成功","retData":true}
      * 创  建 : 2018/06/16 21:49
      */
-    public function adminInit($applyToken,Request $request)
+    public function adminInit(Request $request)
     {
         // 获取职位数据
+        $applyToken = $request->post('applyToken');
         $roleString = $request->post('roleString');
         // 验证数据
+        if(!$applyToken) return returnResponse(1,'请发送标识');
         if(!$roleString) return returnResponse(1,'请选择职位');
         // 引入Service逻辑层数据
         $admin = (new AdminService())->rightAdmin($applyToken,$roleString);

@@ -53,7 +53,7 @@ Route::group('v3/right_module/', function(){
      * 传值方式：POST 路由功能：执行添加管理员操作
      */
     Route::post(
-        'admin_init/:applyToken',
+        'admin_init/:token',
         'right_module/v3.controller.AdminController/adminInit'
     );
     /**

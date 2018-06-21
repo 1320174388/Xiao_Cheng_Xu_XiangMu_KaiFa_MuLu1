@@ -113,19 +113,21 @@ class AdminController extends Controller
      * 名  称 : adminEdit()
      * 功  能 : 执行修改管理员操作
      * 变  量 : --------------------------------------
-     * 输  入 : (string) $token      => '用户标识';
+     * 输  入 : (string) $adminToken      => '用户标识';
      * 输  入 : (string) $roleString => '职位标识字符串，逗号隔开';
      * 输  出 : {"errNum":0,"retMsg":"设置成功","retData":true}
      * 创  建 : 2018/06/20 06:20
      */
-    public function adminEdit($token,Request $request)
+    public function adminEdit(Request $request)
     {
         // 获取职位数据
+        $adminToken = $request->put('adminToken');
         $roleString = $request->put('roleString');
         // 验证数据
         if(!$roleString) return returnResponse(1,'请选择职位');
+        if(!$roleString) return returnResponse(1,'请选择职位');
         // 引入Service逻辑层数据
-        $admin = (new AdminService())->editRight($token,$roleString);
+        $admin = (new AdminService())->editRight($adminToken,$roleString);
         // 判断是否设置成功
         if($admin['msg']=='error') return returnResponse(2,$admin['data']);
         // 返回接口响应数据

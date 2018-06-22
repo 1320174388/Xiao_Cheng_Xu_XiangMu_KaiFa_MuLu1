@@ -52,4 +52,4 @@ Route::group('v2/right_module/', function(){
         'v2/power_all/:power',
         'right_module/v2.controller.RightController/powerAll'
     );
-}
+})->middleware('Right_v2_IsAdmin');

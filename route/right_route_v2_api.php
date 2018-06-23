@@ -59,7 +59,6 @@ Route::group('v2/right_module/', function(){
         'right_module/v2.controller.AdminController/adminGet'
     );
 
-
     /**
      * 传值方式：DELETE 路由功能：执行删除管理员操作
      */

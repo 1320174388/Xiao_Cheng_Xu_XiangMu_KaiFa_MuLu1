@@ -23,11 +23,13 @@ class SessionLibrary
     public function checkSignature()
     {
         // 获取开发者验证请求的数据
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce     = $_GET["nonce"];
+        $signature = (new Request)->get('signature');
+        $timestamp = (new Request)->get('timestamp');
+        $nonce     = (new Request)->get('nonce');
         // 获取配置文件的Token值
         $token = config('v1_config.Token');
+        echo $token;
+        exit;
         // 处理成数组
         $tmpArr = array($token, $timestamp, $nonce);
         // 字典序排序

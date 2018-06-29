@@ -22,7 +22,7 @@ class SessionController extends Controller
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    private function sessionInit(Request $request)
+    private function sessionInit($request)
     {
         // 获取微信服务器发过来的echostr字符串
         $echoStr = $request->get("echostr");
@@ -41,8 +41,8 @@ class SessionController extends Controller
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    public function sessionValue()
+    public function sessionValue(Request $request)
     {
-        $this->sessionInit();
+        $this->sessionInit($request);
     }
 }

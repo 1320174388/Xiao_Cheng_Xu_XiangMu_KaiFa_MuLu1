@@ -9,6 +9,8 @@
  */
 namespace app\talk_module\working_version\v1\controller;
 use think\Controller;
+use think\Request;
+use app\talk_module\working_version\v1\library\SessionLibrary;
 
 class SessionController extends Controller
 {
@@ -20,9 +22,15 @@ class SessionController extends Controller
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    private function sessionInit()
+    private function sessionInit(Request $request)
     {
-        // 接口注册功能
+        // 获取微信服务器发过来的echostr字符串
+        $echoStr = $request->get("echostr");
+        // 判断是不是自己需要的数据
+        if((new SessionLibrary())->checkSignature()){
+            echo $echoStr;
+            exit;
+        }
     }
 
     /**
@@ -35,6 +43,6 @@ class SessionController extends Controller
      */
     public function sessionValue()
     {
-        // 接受数据
+        $this->sessionInit();
     }
 }

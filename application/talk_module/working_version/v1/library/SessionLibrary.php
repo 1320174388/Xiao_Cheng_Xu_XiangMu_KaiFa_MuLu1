@@ -22,10 +22,12 @@ class SessionLibrary
      */
     public function checkSignature()
     {
+        // 获取传值
+        $request = new Request;
         // 获取开发者验证请求的数据
-        $signature = $_GET["signature"];
-        $timestamp = $_GET["timestamp"];
-        $nonce     = $_GET["nonce"];
+        $signature = $request->get('signature');
+        $timestamp = $request->get('timestamp');
+        $nonce     = $request->get('nonce');
         // 获取配置文件的Token值
         $token = config('v1_config.Token');
         // 处理成数组

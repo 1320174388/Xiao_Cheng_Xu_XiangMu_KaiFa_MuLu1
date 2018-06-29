@@ -24,8 +24,10 @@ class SessionController extends Controller
      */
     private function valid()
     {
+        // 获取传值
+        $request = new Request;
         // 获取微信服务器发过来的echostr字符串
-        $echoStr = $_GET["echostr"];
+        $echoStr = $request->get('echostr');
         // 判断是不是自己需要的数据
         if((new SessionLibrary())->checkSignature()){
             echo $echoStr;

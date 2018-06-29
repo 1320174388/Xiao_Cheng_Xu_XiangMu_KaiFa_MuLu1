@@ -44,5 +44,6 @@ class SessionController extends Controller
     public function sessionValue()
     {
         $this->valid();
+        return 'false';
     }
 }

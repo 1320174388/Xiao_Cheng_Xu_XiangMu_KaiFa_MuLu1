@@ -8,6 +8,7 @@
  *  历史记录 :  -----------------------
  */
 namespace app\talk_module\working_version\v1\library;
+use think\Request;
 
 class SessionLibrary
 {
@@ -19,16 +20,12 @@ class SessionLibrary
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    public function checkSignature($request)
+    public function checkSignature()
     {
         // 获取开发者验证请求的数据
-        $signature = $request->get("signature");
-        $timestamp = $request->get("timestamp");
-        $nonce     = $request->get("nonce");
-
-        // 打印数据
-        file_put_contents('1.html',json_encode($request->get()));
-
+        $signature = (new Request)->get("signature");
+        $timestamp = (new Request)->get("timestamp");
+        $nonce     = (new Request)->get("nonce");
         // 获取配置文件的Token值
         $token = config('v1_config.Token');
         // 处理成数组

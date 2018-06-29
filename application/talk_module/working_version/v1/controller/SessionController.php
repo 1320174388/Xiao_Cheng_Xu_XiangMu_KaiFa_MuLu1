@@ -28,8 +28,7 @@ class SessionController extends Controller
         $echoStr = (new Request)->get('echostr');
         // 判断是不是自己需要的数据
         if((new SessionLibrary())->checkSignature()){
-            echo $echoStr;
-            exit;
+            return $echoStr;
         }
     }
 
@@ -43,7 +42,6 @@ class SessionController extends Controller
      */
     public function sessionValue()
     {
-        $this->valid();
-        return 'false';
+        return $this->valid();
     }
 }

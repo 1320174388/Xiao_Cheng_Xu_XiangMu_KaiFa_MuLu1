@@ -15,5 +15,5 @@ return [
     // Token(令牌)
     'Token' => '879ad7c8fd509ba0b27e121dcda74414',
     // EncodingAESKey (消息加密密钥)
-    'EncodingAESKey' => 'tr9JE8YjpcPDZ4voibAycHP3SWbBfndovLUBI4YDjsy',
+    'EncodingAESKey' => 'IIuCtqC800L5fL5KQydwddkSpnWmOrdgSZq4uKTj2Q0',
 ];

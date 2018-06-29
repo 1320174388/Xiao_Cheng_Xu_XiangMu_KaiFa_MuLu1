@@ -8,7 +8,6 @@
  *  历史记录 :  -----------------------
  */
 namespace app\talk_module\working_version\v1\library;
-use think\Request;
 
 class SessionLibrary
 {
@@ -20,7 +19,7 @@ class SessionLibrary
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    public function checkSignature(Request $request)
+    public function checkSignature($request)
     {
         // 获取开发者验证请求的数据
         $signature = $request->get("signature");

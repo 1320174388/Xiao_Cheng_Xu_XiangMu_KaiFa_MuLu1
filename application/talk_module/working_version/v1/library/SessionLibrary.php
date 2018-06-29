@@ -23,9 +23,9 @@ class SessionLibrary
     public function checkSignature()
     {
         // 获取开发者验证请求的数据
-        $signature = request()->get('signature');
-        $timestamp = request()->get('timestamp');
-        $nonce     = request()->get('nonce');
+        $signature = (new Request)->get('signature');
+        $timestamp = (new Request)->get('timestamp');
+        $nonce     = (new Request)->get('nonce');
         // 获取配置文件的Token值
         $token = config('v1_config.Token');
         // 处理成数组

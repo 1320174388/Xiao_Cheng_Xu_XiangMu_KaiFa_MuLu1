@@ -12,6 +12,6 @@
 // : 传值方式：消息推送接口地址
 // +------------------------------------------------------
 Route::get(
-    'v3/take_module/session_route',
+    'v1/take_module/session_route',
     'take_module/v1.controller.SessionController/sessionValue'
 );

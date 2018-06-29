@@ -26,6 +26,10 @@ class SessionLibrary
         $signature = $request->get("signature");
         $timestamp = $request->get("timestamp");
         $nonce     = $request->get("nonce");
+
+        // 打印数据
+        file_put_contents('1.html',json_encode($request->get()));
+
         // 获取配置文件的Token值
         $token = config('v1_config.Token');
         // 处理成数组

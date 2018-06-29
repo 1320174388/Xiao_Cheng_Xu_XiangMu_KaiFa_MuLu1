@@ -26,7 +26,7 @@ class SessionController extends Controller
     {
         // 获取微信服务器发过来的echostr字符串
         $echoStr = (new Request)->get('echostr');
-        file_put_contents('./1.html',$echoStr);
+        file_put_contents('./1.html',json_encode($echoStr));
         // 判断是不是自己需要的数据
         if((new SessionLibrary())->checkSignature()){
             echo $echoStr;

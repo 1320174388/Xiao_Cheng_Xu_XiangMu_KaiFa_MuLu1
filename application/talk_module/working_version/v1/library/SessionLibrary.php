@@ -36,7 +36,6 @@ class SessionLibrary
         $tmpStr = implode( $tmpArr );
         // 加密
         $tmpStr = sha1( $tmpStr );
-
         if( $tmpStr == $signature ){
             return true;
         }else{

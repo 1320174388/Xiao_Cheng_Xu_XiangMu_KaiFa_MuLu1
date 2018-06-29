@@ -27,7 +27,7 @@ class SessionLibrary
 //        $timestamp = request()->param('timestamp');
 //        $nonce     = request()->param('nonce');
         // 获取配置文件的Token值
-        $token = config('v1_config.Token');
+        $token = 'xxx';
         // 处理成数组
         $tmpArr = array($token, $timestamp, $nonce);
         // 字典序排序

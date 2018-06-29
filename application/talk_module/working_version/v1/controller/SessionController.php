@@ -22,13 +22,17 @@ class SessionController extends Controller
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    private function valid()
+    private function valid($data)
     {
         // 获取微信服务器发过来的echostr字符串
-        $echoStr = request()->param('echostr');
+//        $echoStr = $data['echostr'];
         // 判断是不是自己需要的数据
-        if((new SessionLibrary())->checkSignature()){
-            return $echoStr;
+        if ((new SessionLibrary())->checkSignature(
+            $data['signature'],
+            $data['timestamp'],
+            $data['nonce'])
+        ) {
+            return $data['echostr'];
         }
     }
 
@@ -42,6 +46,6 @@ class SessionController extends Controller
      */
     public function sessionValue()
     {
-        return $this->valid();
+        return $this->valid($_GET);
     }
 }

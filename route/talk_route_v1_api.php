@@ -12,6 +12,6 @@
 // : 传值方式：消息推送接口地址
 // +------------------------------------------------------
 Route::get(
-    'v1/talk_module/session_route',
+    'v1/talk_module/talk_route',
     'talk_module/v1.controller.SessionController/sessionValue'
 );

@@ -27,8 +27,6 @@ class SessionService
             'SimpleXMLElement',
             LIBXML_NOCDATA
         );
-        // 打印数据
-        file_put_contents('./test/123.html',$postStr);
         // 处理XML数据
         $XmlTpl = "<xml>
                      <ToUserName>

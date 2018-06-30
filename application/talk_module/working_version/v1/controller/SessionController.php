@@ -52,7 +52,6 @@ class SessionController extends Controller
         // $this->valid();
         // 获取客服信息
         $postStr = file_get_contents("php://input");
-        file_put_contents('./test/123.html',"123");
         // 判断客服信息是否存在
         if (!empty($postStr)) return "success";
         // 处理客服信息,返回XML数据

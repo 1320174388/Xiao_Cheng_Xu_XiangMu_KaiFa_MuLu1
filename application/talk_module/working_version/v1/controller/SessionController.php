@@ -49,7 +49,7 @@ class SessionController extends Controller
     public function sessionValue()
     {
         // 客服推送接入 第一次接入打开注释
-        $this->valid();
+        // $this->valid();
         // 获取客服信息
         $postStr = file_get_contents("php://input");
         // 判断客服信息是否存在

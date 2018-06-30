@@ -12,8 +12,5 @@
 // : 消息推送配置
 // +---------------------------------
 return [
-    // Token(令牌)
-    'Token' => '879ad7c8fd509ba0b27e121dcda74414',
-    // EncodingAESKey (消息加密密钥)
-    'EncodingAESKey' => 'Wr0iYyuMF1MCMeIuwf8CeZ1xr0sGFGDw2BOb85DeH1u',
+
 ];

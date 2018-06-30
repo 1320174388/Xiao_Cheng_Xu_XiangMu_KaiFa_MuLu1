@@ -11,35 +11,5 @@ namespace app\talk_module\working_version\v1\service;
 
 class SessionService
 {
-    /**
-     * 名  称 : handlePostStr()
-     * 功  能 : 处理客服信息
-     * 变  量 : --------------------------------------
-     * 输  入 : $postStr => '小程序发送的客服信息内容';
-     * 输  出 : ['msg'=>'success','data'=>'返回的XML数据']
-     * 创  建 : 2018/06/29 16:23
-     */
-    public function handlePostStr($postStr)
-    {
-        // 处理客服信息
-        $postObj = simplexml_load_string(
-            $postStr,
-            'SimpleXMLElement',
-            LIBXML_NOCDATA
-        );
-        // 处理XML数据
-        $XmlTpl = "<xml>
-                     <ToUserName>
-                        <![CDATA[".$postObj->FromUserName."]]>
-                     </ToUserName>
-                     <FromUserName>
-                        <![CDATA[".$postObj->ToUserName."]]>
-                     </FromUserName><CreateTime>".time()."</CreateTime>
-                     <MsgType>
-                        <![CDATA[transfer_customer_service]]>
-                     </MsgType>
-                   </xml>";
-        // 返回数据
-        echo $XmlTpl; exit;
-    }
+
 }

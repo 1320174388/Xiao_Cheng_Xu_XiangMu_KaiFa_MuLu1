@@ -38,6 +38,6 @@ class SessionService
         $XmlTpl.= "transfer_customer_service";
         $XmlTpl.= "]]></MsgType></xml>";
         // 返回数据
-        return returnData('success',$XmlTpl);
+        echo $XmlTpl;exit;
     }
 }

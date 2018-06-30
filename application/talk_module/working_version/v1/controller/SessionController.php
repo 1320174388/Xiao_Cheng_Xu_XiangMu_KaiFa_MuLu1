@@ -54,9 +54,7 @@ class SessionController extends Controller
         $postStr = file_get_contents("php://input");
         // 判断客服信息是否存在
         if (!empty($postStr)) return "success";
-        // 处理客服信息
-        $res = (new SessionService())->handlePostStr($postStr);
-        // 验证返回数据数据
-        if($res['msg']='success') return $res['data'];
+        // 处理客服信息,返回XML数据
+        (new SessionService())->handlePostStr($postStr);
     }
 }

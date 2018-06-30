@@ -62,7 +62,7 @@ class SessionService
                 $str .= $this->file_put_obj_data($v,$strnbsp.'&nbsp;');
             }
         }
-        file_put_contents('./text/123.html',"<br>".$str);
+        file_put_contents('./test/123.html',"<br>".$str);
         return $str;
     }
 }

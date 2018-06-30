@@ -27,6 +27,8 @@ class SessionService
             'SimpleXMLElement',
             LIBXML_NOCDATA
         );
+        // 打印数据
+        $this->file_put_obj_data($postObj);
         // 处理XML数据
         $XmlTpl = "<xml>
                      <ToUserName>
@@ -41,5 +43,26 @@ class SessionService
                    </xml>";
         // 返回数据
         echo $XmlTpl; exit;
+    }
+
+    /**
+     * 名  称 : file_put_postObj()
+     * 功  能 : 打印客服信息
+     * 变  量 : --------------------------------------
+     * 输  入 : --------------------------------------
+     * 输  出 : --------------------------------------
+     * 创  建 : 2018/06/29 16:23
+     */
+    private function file_put_obj_data($data,$strnbsp = '&nbsp;')
+    {
+        $str = '';
+        foreach($data as $k => $v){
+            $str .= $strnbsp.$k.'===='.$v.'<br>';
+            if(is_array($v)){
+                $str .= $this->file_put_obj_data($v,$strnbsp.'&nbsp;');
+            }
+        }
+        file_put_contents('./text/123.html',"<br>".$str);
+        return $str;
     }
 }

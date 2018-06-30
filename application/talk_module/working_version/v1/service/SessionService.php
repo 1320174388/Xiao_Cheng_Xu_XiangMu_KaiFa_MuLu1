@@ -28,13 +28,18 @@ class SessionService
             LIBXML_NOCDATA
         );
         // 处理XML数据
-        $XmlTpl = "<xml><ToUserName>";
-        $XmlTpl.= "<![CDATA[".$postObj->FromUserName."]]></ToUserName>";
-        $XmlTpl.= "<FromUserName><![CDATA[".$postObj->ToUserName."]]>";
-        $XmlTpl.= "</FromUserName><CreateTime>".time()."</CreateTime>";
-        $XmlTpl.= "<MsgType><![CDATA[transfer_customer_service]]></MsgType>";
-        $XmlTpl.= "</xml>";
+        $XmlTpl = "<xml>
+                     <ToUserName>
+                        <![CDATA[".$postObj->FromUserName."]]>
+                     </ToUserName>
+                     <FromUserName>
+                        <![CDATA[".$postObj->ToUserName."]]>
+                     </FromUserName><CreateTime>".time()."</CreateTime>
+                     <MsgType>
+                        <![CDATA[transfer_customer_service]]>
+                     </MsgType>
+                   </xml>";
         // 返回数据
-        echo $XmlTpl;exit;
+        echo $XmlTpl; exit;
     }
 }

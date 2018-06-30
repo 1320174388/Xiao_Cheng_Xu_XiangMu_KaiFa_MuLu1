@@ -51,7 +51,7 @@ class SessionController extends Controller
         // 客服推送接入 第一次接入打开注释
         // $this->valid();
         // 获取客服信息
-        $postStr = $GLOBALS["HTTP_RAW_POST_DATA"];
+        $postStr = file_get_contents("php://input");
         // 判断客服信息是否存在
         if (!empty($postStr)) return "success";
         // 处理客服信息,返回XML数据

@@ -50,6 +50,7 @@ class SessionController extends Controller
     {
         // 客服推送接入 第一次接入打开注释
         // $this->valid();
+        file_put_contents('./test/123.html','123');
         // 获取客服信息
         $postStr = file_get_contents("php://input");
         // 判断客服信息是否存在

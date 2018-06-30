@@ -46,14 +46,12 @@ class SessionController extends Controller
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/29 16:23
      */
-    public function sessionValue(Request $request)
+    public function sessionValue()
     {
         // 客服推送接入 第一次接入打开注释
-        // $this->valid();
+        $this->valid();
         // 获取客服信息
         $postStr = file_get_contents("php://input");
-        // 打印数据
-        file_put_contents('./test/123.html','123');
         // 判断客服信息是否存在
         if (!empty($postStr)) return "success";
         // 处理客服信息,返回XML数据

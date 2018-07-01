@@ -11,7 +11,7 @@ namespace app\talk_module\working_version\v1\controller;
 use think\Controller;
 use think\Request;
 use app\talk_module\working_version\v1\library\PeoplesLibrary;
-use app\talk_module\working_version\v1\service\PeoplesService;
+use app\talk_module\working_version\v1\service\PeoplesServer;
 
 class PeoplesController extends Controller
 {}

@@ -11,7 +11,7 @@ namespace app\talk_module\working_version\v1\controller;
 use think\Controller;
 use think\Request;
 use app\talk_module\working_version\v1\library\LeavingsLibrary;
-use app\talk_module\working_version\v1\service\LeavingsService;
+use app\talk_module\working_version\v1\service\LeavingsServer;
 
 class LeavingsController extends Controller
 {}

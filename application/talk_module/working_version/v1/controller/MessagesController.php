@@ -11,7 +11,7 @@ namespace app\talk_module\working_version\v1\controller;
 use think\Controller;
 use think\Request;
 use app\talk_module\working_version\v1\library\MessagesLibrary;
-use app\talk_module\working_version\v1\service\MessagesService;
+use app\talk_module\working_version\v1\service\MessagesServer;
 
 class MessagesController extends Controller
 {}

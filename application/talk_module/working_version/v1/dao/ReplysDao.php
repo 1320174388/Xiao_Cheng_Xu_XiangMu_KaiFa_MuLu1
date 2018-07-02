@@ -29,7 +29,7 @@ class ReplyDao implements ReplysInterface
 		if($index = ''){
 			$list = $ReplyModel->select();
 		}else{
-			$list = $ReplyModel->where('index',$index)->find();
+			$list = $ReplyModel->where('session_index',$index)->find();
 		}
 		// 验证
 		if(!$list){
@@ -52,6 +52,8 @@ class ReplyDao implements ReplysInterface
 	{
 		// 实例化自动回复信息model
 		$ReplyModel = new ReplyModel;
+		// 生成自动回复主键
+		$ReplyModel->session_index	 = md5(uniqid());
 		// 获取自动回复名称
 		$ReplyModel->session_name    = $sessionName;
 		// 获取自动回复类型

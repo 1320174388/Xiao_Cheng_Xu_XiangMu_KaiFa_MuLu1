@@ -22,7 +22,12 @@ class ReplysService
      */
     public function getReplys($sessionIndex='')
     {
-        // 引入dao层
+        // 引入ReplysDao层
+        $list = (new ReplysDao()->replySelect($sessionIndex));
+        // 判断是否有数据
+        if($list['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$list['data']);
     }
 
     /**
@@ -37,7 +42,12 @@ class ReplysService
      */
     public function postReplys($sessionName,$sessionType,$sessionInfo)
     {
-        // 引入dao层
+        // 引入Replysdao层
+        $data = (new ReplysDao()->replyCreate($sessionName,$sessionType,$sessionInfo));
+        // 判断是否添加成功
+        if($data['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$data['data']);
     }
 
     /**
@@ -53,7 +63,12 @@ class ReplysService
      */
     public function putReplys($index,$sessionName,$sessionType,$sessionInfo)
     {
-        // 引入dao层
+        // 引入Replysdao层
+        $res = (new ReplysDao()->replyUpdate($index,$sessionName,$sessionType,$sessionInfo));
+        // 判断是否修改成功
+        if($res['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$res['data']);
     }
 
     /**
@@ -66,6 +81,11 @@ class ReplysService
      */
     public function deleteReplys($index)
     {
-        // 引入dao层
+        // 引入Replysdao层
+        $del = (new ReplysDao()->replyDelete($index));
+        // 判断是否删除成功
+        if($del['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$del['data']);
     }
 }

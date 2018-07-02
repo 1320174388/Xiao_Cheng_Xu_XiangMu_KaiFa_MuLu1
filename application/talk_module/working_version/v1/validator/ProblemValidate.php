@@ -45,7 +45,8 @@ class ProblemValidate
      * 功  能 : 处理用户后期继续提问信息函数
      * 变  量 : --------------------------------------
      * 输  入 : (Array) $data = [
-     *     'messageContent'  => '留言内容',
+     *     'messageIdentity'  => '留言身份',
+     *     'messageContent'   => '留言内容',
      * ];
      * 输  出 : ['msg'=>'success','data'=>true]
      * 输  出 : ['msg'=>'error','data'=>'错误信息']
@@ -55,8 +56,11 @@ class ProblemValidate
     {
         // 判断内容是否为空
         if(!$data['messageContent']) return returnDate('error','请输入内容');
+        if(!$data['messageContent']) return returnDate('error','留言身份为空');
 
         //  判断内容
+        if(($data['messageContent']!='User')&&($data['messageContent']!='Admin'))
+            return returnDate('error','身份错误');
         if(strlen($data['messageContent'] > 2000))
             return returnDate('error','内容不能超过2000字');
         // 返回正确格式

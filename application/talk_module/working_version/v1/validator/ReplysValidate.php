@@ -14,7 +14,9 @@ class ReplysValidate
      * 名  称 : replysVerification()
      * 功  能 : 验证回复信息接口
      * 变  量 : --------------------------------------
-     * 输  入 : --------------------------------------
+     * 输  入 : (string) $sessionName => '自动回复名称';
+     * 输  入 : (string) $sessionType => '自动回复类型';
+     * 输  入 : (string) $sessionInfo => '自动回复内容';
      * 输  出 : ['msg'=>'success','data'=>true]
      * 输  出 : ['msg'=>'error','data'=>'错误信息']
      * 创  建 : 2018/07/02 10:40

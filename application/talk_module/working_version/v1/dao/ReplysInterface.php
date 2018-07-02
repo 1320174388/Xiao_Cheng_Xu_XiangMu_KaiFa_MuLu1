@@ -35,10 +35,10 @@ interface ReplysInterface{
      * 输  出 :
      * 创  建 : 2018/07/05 09:15
      */
-    public function replyUpdate();
+    public function replyUpdate($index,$sessionName,$sessionType,$sessionInfo);
 
     /**
-     * 名  称 : replyUpdate()
+     * 名  称 : replyDelete()
      * 功  能 : 声明：删除自动回复数据
      * 输  入 : (string) $index => '自动回复触发主键';
      * 输  出 :

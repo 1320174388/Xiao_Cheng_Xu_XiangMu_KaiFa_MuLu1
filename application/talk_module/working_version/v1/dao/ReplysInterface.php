@@ -38,7 +38,7 @@ interface ReplysInterface{
      * 输  入 : (string) $sessionInfo  => '自动回复内容';
      * 创  建 : 2018/07/05 09:15
      */
-    public function replyUpdate();
+    public function replyUpdate($index,$sessionName,$sessionType,$sessionInfo);
 
     /**
      * 名  称 : replyUpdate()

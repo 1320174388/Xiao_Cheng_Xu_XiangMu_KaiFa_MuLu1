@@ -25,9 +25,9 @@ class LeavingsDao implements LeavingsInterface
         // 实例化自动model
         $LeavingModel = new LeavingModel;
         // 获取单个用户的所有提问信息
-        $LeavingModel->where('people_index',$peopleIndex)->find();
+        $list = $LeavingModel->where('people_index',$peopleIndex)->find();
         //验证
-        if(!$LeavingModel){
+        if(!$list){
             return returnData('error',false);
         }
         // 返回数据

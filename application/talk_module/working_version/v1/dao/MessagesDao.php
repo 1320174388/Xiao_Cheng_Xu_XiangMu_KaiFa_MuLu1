@@ -9,8 +9,6 @@
  */
 namespace app\talk_module\working_version\v1\dao;
 use app\talk_module\working_version\v1\model\MessageModel;
-use think\Db;
-
 class MessagesDao implements MessagesInterface
 {
     /**

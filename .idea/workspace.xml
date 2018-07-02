@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d8edfd53-c4aa-4431-a105-62f5fa62e00e" name="默认的" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/application/talk_module/working_version/v1/validator/ReplysValidate.php" afterPath="$PROJECT_DIR$/application/talk_module/working_version/v1/validator/ReplysValidate.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -78,8 +79,8 @@
       <file leaf-file-name="ReplysValidate.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/validator/ReplysValidate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+            <state relative-caret-position="611">
+              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <element signature="e#6#175#0#PHP" expanded="true" />
               </folding>
@@ -307,12 +308,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530366877593</updated>
       <workItem from="1530366878705" duration="3457000" />
-      <workItem from="1530493421285" duration="18869000" />
+      <workItem from="1530493421285" duration="19309000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22326000" />
+    <option name="totallyTimeSpent" value="22766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -631,8 +632,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/validator/ReplysValidate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="16" column="1" lean-forward="false" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
+        <state relative-caret-position="611">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
             <element signature="e#6#175#0#PHP" expanded="true" />
           </folding>

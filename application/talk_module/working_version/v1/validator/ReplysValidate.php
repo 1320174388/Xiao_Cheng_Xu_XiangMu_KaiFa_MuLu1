@@ -15,8 +15,8 @@ class ReplysValidate
      * 功  能 : 验证回复信息接口
      * 变  量 : --------------------------------------
      * 输  入 : --------------------------------------
-     * 输  出 : ['msg'=>'success','data'=>'true']
-     * 输  出 : ['msg'=>'success','data'=>'error']
+     * 输  出 : ['msg'=>'success','data'=>true]
+     * 输  出 : ['msg'=>'error','data'=>'错误信息']
      * 创  建 : 2018/07/02 10:40
      */
     public function replysVerification($sessionName,$sessionType,$sessionInfo)
@@ -35,6 +35,8 @@ class ReplysValidate
         //  判断内容
         if(strlen($sessionName > 2000))
             return returnDate('error','内容长度太大');
+        // 返回正确格式
+        return returnDate('success',true);
 
     }
 }

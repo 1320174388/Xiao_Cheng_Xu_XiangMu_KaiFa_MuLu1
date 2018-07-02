@@ -41,15 +41,20 @@ class ProblemService
      * 功  能 : 处理用户后期继续提问信息函数
      * 变  量 : --------------------------------------
      * 输  入 : (Array) $data = [
-     *     'peopleIndex'     => '留言人主键',
-     *     'messageContent'  => '留言内容',
-     *     'messageIdentity' => '留言身份',
+     *     'peopleIndex'      => '留言人主键',
+     *     'messageIdentity'  => '留言身份',
+     *     'messageContent'   => '留言内容',
      * ];
      * 输  出 : ['msg'=>'success','data'=>true]
      * 创  建 : 2018/07/02 15:57
      */
     public function postContent($data)
     {
-
+        // 实例化ProblemDao.php
+        $problemDao = (new ProblemDao())->messageCreate($data);
+        // 验证数据格式
+        if($problemDao['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$problemDao['data']);
     }
 }

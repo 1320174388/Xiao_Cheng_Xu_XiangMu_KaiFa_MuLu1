@@ -43,7 +43,11 @@ class ReplysService
     public function postReplys($sessionName,$sessionType,$sessionInfo)
     {
         // 引入Replysdao层
-        $data = (new ReplysDao())->replyCreate($sessionName,$sessionType,$sessionInfo);
+        $data = (new ReplysDao())->replyCreate(
+            $sessionName,
+            $sessionType,
+            $sessionInfo
+        );
         // 判断是否添加成功
         if($data['msg']=='error') return returnData('error');
         // 返回数据格式
@@ -64,7 +68,12 @@ class ReplysService
     public function putReplys($index,$sessionName,$sessionType,$sessionInfo)
     {
         // 引入Replysdao层
-        $res = (new ReplysDao())->replyUpdate($index,$sessionName,$sessionType,$sessionInfo);
+        $res = (new ReplysDao())->replyUpdate(
+            $index,
+            $sessionName,
+            $sessionType,
+            $sessionInfo
+        );
         // 判断是否修改成功
         if($res['msg']=='error') return returnData('error');
         // 返回数据格式

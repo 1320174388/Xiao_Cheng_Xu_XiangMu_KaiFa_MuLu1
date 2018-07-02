@@ -10,7 +10,7 @@
 namespace app\talk_module\working_version\v1\dao;
 use app\talk_module\working_version\v1\model\ReplyModel;
 
-class ReplyDao implements ReplysInterface
+class ReplysDao implements ReplysInterface
 {
 	/**
      * 名  称 : replySelect()

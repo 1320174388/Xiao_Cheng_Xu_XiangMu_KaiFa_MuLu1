@@ -7,7 +7,7 @@
  *  文件描述 :  获取、添加、修改、自动回复信息
  *  历史记录 :  -----------------------
  */
-namespace app\right_module\working_version\v3\dao;
+namespace app\talk_module\working_version\v1\dao;
 
 interface ReplysInterface{
 

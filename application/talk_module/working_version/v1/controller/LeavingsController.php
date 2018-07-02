@@ -14,4 +14,24 @@ use app\talk_module\working_version\v1\library\LeavingsLibrary;
 use app\talk_module\working_version\v1\service\LeavingsServer;
 
 class LeavingsController extends Controller
-{}
+{
+    /**
+     * 名  称 : leavingsValue()
+     * 功  能 : 获取单个用户所有的提问信息。
+     * 变  量 : -----------------------------
+     * 输  入 : (string) $peopleIndex => '提问人主键标识';
+     * 输  出 : {"errNum":0,"retMsg":"请求成功","retData":true}
+     * 创  建 : 2018/07/02 15:21
+     */
+    public function leavingsList(Request $request)
+    {
+        // 获取提问人标识
+        $peopleIndex = $request->get('peopleIndex');
+        // 引入Service层代码
+        $res = (new LeavingsServer())->getLeavings($peopleIndex);
+        // 验证数据结构
+        if($res['msg']=='error') return returnResponse(0,'请求失败');
+        // 返回数据
+        return returnResponse(0,'请求成功',true);
+    }
+}

@@ -17,13 +17,17 @@ Route::get(
 );
 
 // +------------------------------------------------------
-// : 前台接口，传值方式：GET，功能：用户发起提问信息的接口。
-// : 前台接口，传值方式：GET，功能：用户获取自己所有的提问信息。
-// : 前台接口，传值方式：GET，功能：用户获取自己提问信息的内容。
-// : 前台接口，传值方式：GET，功能：用户后续发送提问信息的接口。
+// : 前台接口，传值方式：POST，功能：用户发起提问信息的接口。
+// : 前台接口，传值方式：GET， 功能：用户获取自己所有的提问信息。
+// : 前台接口，传值方式：GET， 功能：用户获取自己提问信息的内容。
+// : 前台接口，传值方式：GET， 功能：用户后续发送提问信息的接口。
 // +------------------------------------------------------
 Route::post(
-    'v1/talk_module/replys_route',
+    'v1/talk_module/problem_route',
+    'talk_module/v1.controller.ProblemController/problemValue'
+);
+Route::get(
+    'v1/talk_module/problem_route',
     'talk_module/v1.controller.ProblemController/problemValue'
 );
 

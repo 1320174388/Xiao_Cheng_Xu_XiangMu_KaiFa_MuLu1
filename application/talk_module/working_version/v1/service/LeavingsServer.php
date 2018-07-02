@@ -11,5 +11,16 @@ namespace app\talk_module\working_version\v1\service;
 
 class LeavingsServer
 {
+    /**
+     * 名  称 : getLeavings()
+     * 功  能 : 获取单个用户所有的提问信息
+     * 变  量 : -----------------------------
+     * 输  入 : (string) $peopleIndex => '提问人主键标识';
+     * 输  出 : ['msg'=>'success','data'=>'数据']
+     * 创  建 : 2018/07/02 15:21
+     */
+    public function getLeavings($peopleIndex)
+    {
 
+    }
 }

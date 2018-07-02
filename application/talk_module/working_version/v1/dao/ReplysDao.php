@@ -78,7 +78,7 @@ class ReplyDao implements ReplysInterface
      * 输  出 : [ 'msg' => 'error',  'data' => false ]
      * 创  建 : 2018/07/05 10:52
      */
-	public function replyUpdate()
+	public function replyUpdate($index,$sessionName,$sessionType,$sessionInfo)
 	{
 		// 实例化自动回复信息model
 		$ReplyModel = new ReplyModel;

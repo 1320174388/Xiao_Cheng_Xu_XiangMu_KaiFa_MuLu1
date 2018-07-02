@@ -13,7 +13,7 @@
 // +------------------------------------------------------
 Route::get(
     'v1/talk_module/replys_route',
-    'talk_module/v1.controller.SessionController/replysValue'
+    'talk_module/v1.controller.ReplysController/replysValue'
 );
 
 // +------------------------------------------------------
@@ -22,10 +22,11 @@ Route::get(
 // : 前台接口，传值方式：GET，功能：用户获取自己提问信息的内容。
 // : 前台接口，传值方式：GET，功能：用户后续发送提问信息的接口。
 // +------------------------------------------------------
-Route::get(
+Route::post(
     'v1/talk_module/replys_route',
-    'talk_module/v1.controller.SessionController/replysValue'
+    'talk_module/v1.controller.ProblemController/problemValue'
 );
+
 
 // +------------------------------------------------------
 // : 路由分组：v1/talk_module/ 中间件：Right_v3_IsAdmin
@@ -39,19 +40,19 @@ Route::group('v1/talk_module/', function(){
      */
     Route::get(
         'replys_route',
-        'talk_module/v1.controller.SessionController/replysAdd'
+        'talk_module/v1.controller.ReplysController/replysAdd'
     );
     Route::get(
         'replys_route',
-        'talk_module/v1.controller.SessionController/replysList'
+        'talk_module/v1.controller.ReplysController/replysList'
     );
     Route::put(
         'replys_route',
-        'talk_module/v1.controller.SessionController/replysEdit'
+        'talk_module/v1.controller.ReplysController/replysEdit'
     );
     Route::delete(
         'replys_route',
-        'talk_module/v1.controller.SessionController/replysDel'
+        'talk_module/v1.controller.ReplysController/replysDel'
     );
 })->middleware('Right_v3_IsAdmin');
 

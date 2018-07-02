@@ -94,7 +94,6 @@
         // 创建留言信息表
         $pdo->exec('create table '.$table['messages'].'(
             leaving_index varchar(50) primary key,
-            message_title varchar(50),
             message_content text(2000),
             message_identity varchar(50),
             message_sort int(11) unsigned

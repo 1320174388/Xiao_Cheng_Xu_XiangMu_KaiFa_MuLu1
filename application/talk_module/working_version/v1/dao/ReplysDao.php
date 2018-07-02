@@ -61,6 +61,8 @@ class ReplysDao implements ReplysInterface
 		$replyModel->session_type    = $sessionType;
 		// 获取自动回复内容
 		$replyModel->session_content = $sessionInfo;
+		// 获取自动回复时间
+		$replyModel->session_time    = time();
 		// 保存数据库
 		$data = $replyModel->save();
 		// 验证
@@ -86,9 +88,6 @@ class ReplysDao implements ReplysInterface
 	{
 		// 实例化自动回复信息model
 		$replyModel = new ReplyModel;
-
-		// 获取回复信息主键
-		$replyModel->session_index   = $index;
 		
 		// 进行修改
 		$res = $replyModel->save([

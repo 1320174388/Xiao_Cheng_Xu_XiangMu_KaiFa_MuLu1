@@ -9,10 +9,38 @@
  */
 
 // +------------------------------------------------------
-// : 前台接口，传值方式：GET，功能：自动回复信息接口。
+// : 前台接口，传值方式：GET，功能：返回自动回复信息接口。
 // +------------------------------------------------------
 Route::get(
     'v1/talk_module/replys_route',
     'talk_module/v1.controller.SessionController/replysValue'
 );
+
+// +------------------------------------------------------
+// : 路由分组：v1/talk_module/ 中间件：Right_v3_IsAdmin
+// +------------------------------------------------------
+Route::group('v1/talk_module/', function(){
+    /**
+     * 传值方式：POST，  功能：添加自动回复信息接口。
+     * 传值方式：GET，   功能：获取所有自动回复信息接口。
+     * 传值方式：PUT，   功能：修改自动回复信息接口。
+     * 传值方式：DELETE，功能：删除自动回复信息接口。
+     */
+    Route::get(
+        'v1/talk_module/replys_route',
+        'talk_module/v1.controller.SessionController/replysAdd'
+    );
+    Route::get(
+        'v1/talk_module/replys_route',
+        'talk_module/v1.controller.SessionController/replysList'
+    );
+    Route::put(
+        'v1/talk_module/replys_route',
+        'talk_module/v1.controller.SessionController/replysEdit'
+    );
+    Route::delete(
+        'v1/talk_module/replys_route',
+        'talk_module/v1.controller.SessionController/replysDel'
+    );
+})->middleware('Right_v3_IsAdmin');
 

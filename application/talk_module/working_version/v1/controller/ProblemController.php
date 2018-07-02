@@ -81,7 +81,7 @@ class ProblemController extends Controller
      * 功  能 : 处理用户后期继续提问信息函数
      * 变  量 : -----------------------------
      * 输  入 : (Array) $data = [
-     *     'leavingIndex'     => '留言人主键',
+     *     'leavingIndex'     => '留言主键',
      *     'messageContent'   => '留言内容',
      * ];
      * 输  出 : {"errNum":0,"retMsg":"发送成功","retData":true}
@@ -108,11 +108,12 @@ class ProblemController extends Controller
      * 名  称 : acknowledgement()
      * 功  能 : 确定处理信息接口
      * 变  量 : -----------------------------
-     * 输  入 : (Array) $data = [
-     *     'peopleIndex'      => '留言人主键',
-     *     'messageContent'   => '留言内容',
-     * ];
-     * 输  出 : {"errNum":0,"retMsg":"发送成功","retData":true}
-     * 创  建 : 2018/07/02 17:39
+     * 输  入 : (String) $leavingIndex => '留言主键',
+     * 输  出 : {"errNum":0,"retMsg":"处理成功","retData":true}
+     * 创  建 : 2018/07/02 22:15
      */
+    public function acknowledgement()
+    {
+        
+    }
 }

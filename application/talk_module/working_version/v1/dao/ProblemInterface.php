@@ -31,7 +31,7 @@ interface ProblemInterface
      * 名  称 : messageCreate()
      * 功  能 : 将用户继续提问的信息保存到数据库。
      * 输  入 : (Array) $data = [
-     *     'peopleIndex'      => '留言人主键',
+     *     'leavingIndex'     => '留言人主键',
      *     'messageIdentity'  => '留言身份',
      *     'messageContent'   => '留言内容',
      * ];

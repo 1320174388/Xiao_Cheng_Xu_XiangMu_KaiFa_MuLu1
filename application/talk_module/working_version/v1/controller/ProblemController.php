@@ -22,6 +22,6 @@ class ProblemController extends Controller
      */
     public function problemValue()
     {
-        
+
     }
 }

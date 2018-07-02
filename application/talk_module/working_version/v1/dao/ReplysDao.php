@@ -35,6 +35,7 @@ class ReplyDao implements ReplysInterface
 		if(!$list){
 			return returnData('error',false);
 		}
+		// 返回数据
 		return returnData('success',$index);
 	}
 
@@ -66,6 +67,7 @@ class ReplyDao implements ReplysInterface
 		if(!$data){
 			return returnData('error',false);
 		}
+		// 返回数据
 		return returnData('success',true);
 	}
 
@@ -91,16 +93,17 @@ class ReplyDao implements ReplysInterface
 		// 进行修改
 		$res = $ReplyModel->save([
 			// 获取自动回复信息名称
-			$ReplyModel->session_name    = $sessionName;
+			$ReplyModel->session_name    = $sessionName,
 			// 获取自动回复信息类型
-			$ReplyModel->session_type  	 = $sessionType;
+			$ReplyModel->session_type  	 = $sessionType,
 			// 获取自动回复信息内容
-			$ReplyModel->session_content = $sessionInfo;
+			$ReplyModel->session_content = $sessionInfo,
 		],['session_index'=>$index]);
 		// 验证
 		if(!$res){
 			return returnData('error',false);
 		}
+		// 返回数据
 		return returnData('success',true);
 	}
 
@@ -122,6 +125,7 @@ class ReplyDao implements ReplysInterface
 		if(!$del){
 			return returnData('error',false);
 		}
+		// 返回数据
 		return returnData('success',true);
 	}
 }

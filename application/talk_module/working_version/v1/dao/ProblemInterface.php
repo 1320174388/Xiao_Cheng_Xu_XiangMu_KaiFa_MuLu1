@@ -26,4 +26,16 @@ interface ProblemInterface
      * 创  建 : 2018/07/05 09:15
      */
     public function problemCreate($data);
+
+    /**
+     * 名  称 : messageCreate()
+     * 功  能 : 将用户继续提问的信息保存到数据库。
+     * 输  入 : (Array) $data = [
+     *     'peopleIndex'     => '留言人主键',
+     *     'messageContent'  => '留言内容',
+     *     'messageIdentity' => '留言身份',
+     * ];
+     * 创  建 : 2018/07/05 17:54
+     */
+    public function messageCreate($data);
 }

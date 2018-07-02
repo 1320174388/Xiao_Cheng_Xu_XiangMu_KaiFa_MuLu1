@@ -11,7 +11,7 @@
 namespace app\talk_module\working_version\v1\model;
 use think\Model;
 
-class MessageModel extends Molde
+class MessageModel extends Model
 {
 	// 设置当前模型对应的完整数据表名称
 	protected $table = '';

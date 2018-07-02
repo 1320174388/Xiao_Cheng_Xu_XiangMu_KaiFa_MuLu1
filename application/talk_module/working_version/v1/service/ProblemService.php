@@ -41,7 +41,7 @@ class ProblemService
      * 功  能 : 处理用户后期继续提问信息函数
      * 变  量 : --------------------------------------
      * 输  入 : (Array) $data = [
-     *     'leavingIndex'     => '留言人主键',
+     *     'leavingIndex'     => '留言主键',
      *     'messageIdentity'  => '留言身份',
      *     'messageContent'   => '留言内容',
      * ];
@@ -56,5 +56,21 @@ class ProblemService
         if($problemDao['msg']=='error') return returnData('error');
         // 返回数据格式
         return returnData('success',$problemDao['data']);
+    }
+
+    /**
+     * 名  称 : putLeaving()
+     * 功  能 : 将留言信表的留言状态改成2，
+     * 功  能 : 将处理人的主键写入留言表的处理人字段中，
+     * 功  能 : 判断用户是否有未处理的留言信息，没有的话，将留言人状态改为2
+     * 变  量 : --------------------------------------
+     * 输  入 : (String) $leavingIndex => '留言主键',
+     * 输  入 : (String) $adminToken   => '处理人主键',
+     * 输  出 : ['msg'=>'success','data'=>true]
+     * 创  建 : 2018/07/02 22:15
+     */
+    public function putLeaving($leavingIndex,$adminToken)
+    {
+
     }
 }

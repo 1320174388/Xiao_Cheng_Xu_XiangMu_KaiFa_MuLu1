@@ -106,14 +106,28 @@ class ProblemController extends Controller
 
     /**
      * 名  称 : acknowledgement()
-     * 功  能 : 确定处理信息接口
+     * 功  能 : 将留言信表的留言状态改成2，
+     * 功  能 : 将处理人的主键写入留言表的处理人字段中，
+     * 功  能 : 判断用户是否有未处理的留言信息，没有的话，将留言人状态改为2
      * 变  量 : -----------------------------
      * 输  入 : (String) $leavingIndex => '留言主键',
+     * 输  入 : (String) $adminToken   => '处理人主键',
      * 输  出 : {"errNum":0,"retMsg":"处理成功","retData":true}
      * 创  建 : 2018/07/02 22:15
      */
-    public function acknowledgement()
+    public function acknowledgement(Request $request)
     {
-        
+        // 获取留言主键，处理人主键
+        $leavingIndex = $request->post('leavingIndex');
+        $adminToken   = $request->post('adminToken');
+        // 引入service层代码
+        $res = (new ProblemService())->putLeaving(
+            $leavingIndex,
+            $adminToken
+        );
+        // 验证数据
+        if($res['msg']=='error') returnResponse(1,$res['data']);
+        // 返回成功数据
+        return returnResponse(1,'发送成功',true);
     }
 }

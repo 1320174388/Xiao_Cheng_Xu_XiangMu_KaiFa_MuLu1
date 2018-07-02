@@ -43,12 +43,23 @@ class ProblemDao implements ProblemInterface
         // 启动事务
         Db::startTrans();
         try {
-            // 处理留言人数据
-            $peopleModel->people_index  = $peopleIndex;
-            $peopleModel->people_name   = $data['peopleName'];
-            $peopleModel->people_sex    = $data['peopleSex'];
-            $peopleModel->people_status = '1';
-            $peopleModel->people_time   = time();
+            // 查询留言人是否存在
+            $res = $peopleModel
+                    ->where('people_index',$peopleIndex)
+                    ->find();
+            // 验证
+            if($res){
+                $peopleModel->people_name   = $data['peopleName'];
+                $peopleModel->people_sex    = $data['peopleSex'];
+                $peopleModel->people_status = '1';
+            }else{
+                // 处理留言人数据
+                $peopleModel->people_index  = $peopleIndex;
+                $peopleModel->people_name   = $data['peopleName'];
+                $peopleModel->people_sex    = $data['peopleSex'];
+                $peopleModel->people_status = '1';
+                $peopleModel->people_time   = time();
+            }
             // 验证数据
             if(!$peopleModel->save()) return returnData('error',false);
             // 处理留言数据

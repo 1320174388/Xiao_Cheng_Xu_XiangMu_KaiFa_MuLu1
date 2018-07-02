@@ -15,25 +15,27 @@ interface ReplysInterface{
      * 名  称 : replySelect()
      * 功  能 : 声明：获取单个或所有自动回复数据
      * 输  入 : (string) $index => '自动回复触发主键';
-     * 输  出 :
      * 创  建 : 2018/07/05 09:15
      */
-    public function replySelect($index);
+    public function replySelect($index='');
 
     /**
      * 名  称 : replyCreate()
      * 功  能 : 声明：添加自动回复数据
-     * 输  入 :
-     * 输  出 :
+     * 输  入 : (string) $sessionName => '自动回复名称';
+     * 输  入 : (string) $sessionType => '自动回复类型';
+     * 输  入 : (string) $sessionInfo => '自动回复内容';
      * 创  建 : 22018/07/05 09:15
      */
-    public function replyCreate();
+    public function replyCreate($sessionName,$sessionType,$sessionInfo);
 
     /**
      * 名  称 : replyUpdate()
      * 功  能 : 声明：修改自动回复数据
-     * 输  入 :
-     * 输  出 :
+     * 输  入 : (string) $index        => '回复信息主键';
+     * 输  入 : (string) $sessionName  => '自动回复名称';
+     * 输  入 : (string) $sessionType  => '自动回复类型';
+     * 输  入 : (string) $sessionInfo  => '自动回复内容';
      * 创  建 : 2018/07/05 09:15
      */
     public function replyUpdate();
@@ -42,7 +44,6 @@ interface ReplysInterface{
      * 名  称 : replyUpdate()
      * 功  能 : 声明：删除自动回复数据
      * 输  入 : (string) $index => '自动回复触发主键';
-     * 输  出 :
      * 创  建 : 2018/07/05 09:15
      */
     public function replyDelete($index);

@@ -16,7 +16,7 @@ use app\talk_module\working_version\v1\service\LeavingsServer;
 class LeavingsController extends Controller
 {
     /**
-     * 名  称 : leavingsValue()
+     * 名  称 : leavingsList()
      * 功  能 : 获取单个用户所有的提问信息。
      * 变  量 : -----------------------------
      * 输  入 : (string) $peopleIndex => '提问人主键标识';

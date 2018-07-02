@@ -27,8 +27,12 @@ Route::post(
     'talk_module/v1.controller.ProblemController/problemValue'
 );
 Route::get(
-    'v1/talk_module/problem_route',
-    'talk_module/v1.controller.ProblemController/problemValue'
+    'v1/talk_module/leaving_route',
+    'talk_module/v1.controller.LeavingsController/leavingsList'
+);
+Route::get(
+    'v1/talk_module/message_route',
+    'talk_module/v1.controller.MessagesController/messageList'
 );
 
 

@@ -36,7 +36,7 @@ class ReplysDao implements ReplysInterface
 			return returnData('error',false);
 		}
 		// 返回数据
-		return returnData('success',$index);
+		return returnData('success',$list);
 	}
 
 	/**

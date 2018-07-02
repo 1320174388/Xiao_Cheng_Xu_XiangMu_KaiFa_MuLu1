@@ -17,6 +17,7 @@ interface ProblemInterface
      * 功  能 : 用户提的问题，写入问题数据库，保存标题，创建时间。
      * 功  能 : 提问问题的内容写入留言信息数据库，信息身份：User/Admin
      * 输  入 : (Array) $data = [
+     *     'peopleIndex'    => '留言人主键',
      *     'peopleName'     => '留言人名称',
      *     'peopleSex'      => '留言人性别',
      *     'leavingTitle'   => '留言标题',
@@ -25,4 +26,16 @@ interface ProblemInterface
      * 创  建 : 2018/07/05 09:15
      */
     public function problemCreate($data);
+
+    /**
+     * 名  称 : messageCreate()
+     * 功  能 : 将用户继续提问的信息保存到数据库。
+     * 输  入 : (Array) $data = [
+     *     'peopleIndex'     => '留言人主键',
+     *     'messageContent'  => '留言内容',
+     *     'messageIdentity' => '留言身份',
+     * ];
+     * 创  建 : 2018/07/05 17:54
+     */
+    public function messageCreate($data);
 }

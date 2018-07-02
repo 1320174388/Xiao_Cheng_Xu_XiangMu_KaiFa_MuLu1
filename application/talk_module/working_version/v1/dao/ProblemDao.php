@@ -93,8 +93,9 @@ class ProblemDao implements ProblemInterface
      * 名  称 : messageCreate()
      * 功  能 : 将用户继续提问的信息保存到数据库。
      * 输  入 : (Array) $data = [
-     *     'peopleIndex'     => '留言人主键',
-     *     'messageContent'  => '留言内容',
+     *     'peopleIndex'      => '留言人主键',
+     *     'messageIdentity'  => '留言身份',
+     *     'messageContent'   => '留言内容',
      * ];
      * 输  出 : ['msg'=>'success','data'=>true]
      * 输  出 : ['msg'=>'error','data'=>false]
@@ -109,7 +110,7 @@ class ProblemDao implements ProblemInterface
         // 处理保存留言信息数据
         $messageModel->leaving_index    = $peopleIndex;
         $messageModel->message_content  = $data['messageContent'];
-        $messageModel->message_identity = 'User';
+        $messageModel->message_identity = $data['messageIdentity'];
         // 判断数据库里有多少条留言主键然后进行排序
         $countData = MessageModel::count();
         $messageModel->message_sort	    = $countData+1;

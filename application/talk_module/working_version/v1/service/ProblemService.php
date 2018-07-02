@@ -64,12 +64,13 @@ class ProblemService
      * 功  能 : 将处理人的主键写入留言表的处理人字段中，
      * 功  能 : 判断用户是否有未处理的留言信息，没有的话，将留言人状态改为2
      * 变  量 : --------------------------------------
+     * 输  入 : (String) $peopleIndex  => '留言人主键',
      * 输  入 : (String) $leavingIndex => '留言主键',
      * 输  入 : (String) $adminToken   => '处理人主键',
      * 输  出 : ['msg'=>'success','data'=>true]
      * 创  建 : 2018/07/02 22:15
      */
-    public function putLeaving($leavingIndex,$adminToken)
+    public function putLeaving($peopleIndex,$leavingIndex,$adminToken)
     {
 
     }

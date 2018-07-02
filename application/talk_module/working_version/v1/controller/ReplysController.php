@@ -19,8 +19,8 @@ class ReplysController extends Controller
      * 名  称 : replysValue()
      * 功  能 : 获取回复信息接口
      * 变  量 : --------------------------------------
-     * 输  入 : $sessionIndex => '回复信息主键';
-     * 输  出 : --------------------------------------
+     * 输  入 : (string) $sessionIndex => '回复信息主键';
+     * 输  出 : {"errNum":0,"retMsg":"请求成功","retData":{"数据"}}
      * 创  建 : 2018/06/30 21:26
      */
     public function replysValue(Request $request)
@@ -39,13 +39,28 @@ class ReplysController extends Controller
      * 名  称 : replysAdd()
      * 功  能 : 添加自动回复信息接口
      * 变  量 : --------------------------------------
-     * 输  入 : --------------------------------------
-     * 输  出 : --------------------------------------
+     * 输  入 : (string) $sessionName => '自动回复名称';
+     * 输  入 : (string) $sessionType => '自动回复类型';
+     * 输  入 : (string) $sessionInfo => '自动回复内容';
+     * 输  出 : {"errNum":0,"retMsg":"添加成功","retData":true}
      * 创  建 : 2018/06/30 21:26
      */
-    public function replysAdd()
+    public function replysAdd(Request $request)
     {
-        // 添加自动回复信息接口
+        // 获取数据信息
+        $sessionName = $request->get('sessionName');
+        $sessionType = $request->get('sessionType');
+        $sessionInfo = $request->get('sessionInfo');
+        // 引入Service层处理逻辑
+        $res = (new ReplysService())->postReplys(
+            $sessionName,
+            $sessionType,
+            $sessionInfo
+        );
+        // 验证返回数据
+        if($res['msg']=='error') return returnResponse(1,'添加失败');
+        // 返回数据
+        return returnResponse(0,'添加成功',$res['data']);
     }
 
     /**
@@ -53,37 +68,67 @@ class ReplysController extends Controller
      * 功  能 : 获取所有自动回复信息接口
      * 变  量 : --------------------------------------
      * 输  入 : --------------------------------------
-     * 输  出 : --------------------------------------
+     * 输  出 : {"errNum":0,"retMsg":"请求成功","retData":{"数据"}}
      * 创  建 : 2018/06/30 21:26
      */
     public function replysList()
     {
-        // 获取所有自动回复信息接口
+        // 引入Service层处理逻辑
+        $res = (new ReplysService())->getReplys();
+        // 验证返回数据
+        if($res['msg']=='error') return returnResponse(1,'请求失败');
+        // 返回数据
+        return returnResponse(0,'请求成功',$res['data']);
     }
 
     /**
      * 名  称 : replysEdit()
      * 功  能 : 修改自动回复信息接口
      * 变  量 : --------------------------------------
-     * 输  入 : --------------------------------------
-     * 输  出 : --------------------------------------
+     * 输  入 : (string) $sessionIndex => '回复信息主键';
+     * 输  入 : (string) $sessionName  => '自动回复名称';
+     * 输  入 : (string) $sessionType  => '自动回复类型';
+     * 输  入 : (string) $sessionInfo  => '自动回复内容';
+     * 输  出 : {"errNum":0,"retMsg":"修改成功","retData":true}
      * 创  建 : 2018/06/30 21:26
      */
-    public function replysEdit()
+    public function replysEdit(Request $request)
     {
-        // 修改自动回复信息接口
+        // 获取数据信息
+        $sessionIndex = $request->get('sessionIndex');
+        $sessionName  = $request->get('sessionName');
+        $sessionType  = $request->get('sessionType');
+        $sessionInfo  = $request->get('sessionInfo');
+        // 引入Service层处理逻辑
+        $res = (new ReplysService())->putReplys(
+            $sessionIndex,
+            $sessionName,
+            $sessionType,
+            $sessionInfo
+        );
+        // 验证返回数据
+        if($res['msg']=='error') return returnResponse(1,'修改失败');
+        // 返回数据
+        return returnResponse(0,'修改成功',$res['data']);
     }
 
     /**
      * 名  称 : replysDel()
      * 功  能 : 删除自动回复信息接口
      * 变  量 : --------------------------------------
-     * 输  入 : --------------------------------------
-     * 输  出 : --------------------------------------
+     * 输  入 : (string) $sessionIndex => '回复信息主键';
+     * 输  出 :  {"errNum":0,"retMsg":"删除成功","retData":true}
      * 创  建 : 2018/06/30 21:26
      */
-    public function replysDel()
+    public function replysDel(Request $request)
     {
-        // 删除自动回复信息接口
+        // 获取回复信息
+        $sessionIndex = $request->get('sessionIndex');
+        // 引入Service层处理逻辑
+        $res = (new ReplysService())->deleteReplys($sessionIndex);
+        // 验证返回数据
+        if($res['msg']=='error') return returnResponse(1,'删除失败');
+        // 返回数据
+        return returnResponse(0,'删除成功',$res['data']);
     }
 }

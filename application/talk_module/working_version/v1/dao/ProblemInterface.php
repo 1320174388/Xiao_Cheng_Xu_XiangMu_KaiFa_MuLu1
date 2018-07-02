@@ -37,4 +37,15 @@ interface ProblemInterface
      * 创  建 : 2018/07/05 17:54
      */
     public function messageCreate($data);
+
+    /**
+     * 名  称 : adminMsgCreate()
+     * 功  能 : 客服回复信息接口
+     * 输  入 : (Array) $data = [
+     *     'peopleIndex'     => '留言人主键',
+     *     'messageContent'  => '留言内容',
+     * ];
+     * 创  建 : 22018/07/02 21:42
+     */
+    public function adminMsgCreate($data);
 }

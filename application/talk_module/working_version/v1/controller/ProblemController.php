@@ -95,7 +95,7 @@ class ProblemController extends Controller
         $val = (new ProblemValidate())->ProblemsVerification($data);
         if($val['msg']=='error') return returnResponse(1,$val['data']);
         // 引入service层代码
-        $res = (new ProblemService())->postContent($data);
+        $res = (new ProblemService())->postAdminContent($data);
         // 验证数据
         if($res['msg']=='error') returnResponse(1,$res['data']);
         // 返回成功数据

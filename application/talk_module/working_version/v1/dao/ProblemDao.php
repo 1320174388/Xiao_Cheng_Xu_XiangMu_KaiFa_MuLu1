@@ -120,4 +120,25 @@ class ProblemDao implements ProblemInterface
         // 返回数据格式
         return returnData('success',true);
     }
+
+    /**
+     * 名  称 : adminLeaving()
+     * 功  能 : 将留言表的留言状态改成2，
+     * 功  能 : 将处理人的主键写入留言表的处理人字段中，
+     * 功  能 : 判断用户是否有未处理的留言信息，没有的话，将留言人状态改为2
+     * 输  入 : (String) $leavingIndex => '留言主键',
+     * 输  入 : (String) $adminToken   => '处理人主键',
+     * 输  出 : ['msg'=>'error',false]
+     * 输  出 : ['msg'=>'success',true]
+     * 创  建 : 2018/07/02 23:13
+     */
+    public function adminLeaving($leavingIndex, $adminToken)
+    {
+        // 实例化留言信息表
+        $leavingModel = new LeavingModel();
+        $leavingModel->laeving_status = 2;
+        $leavingModel->leaving_handel = $adminToken;
+        // 判断用户是否有未处理的留言信息
+        
+    }
 }

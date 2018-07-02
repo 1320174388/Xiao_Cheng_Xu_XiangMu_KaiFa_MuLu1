@@ -27,19 +27,19 @@ Route::group('v1/talk_module/', function(){
      * 传值方式：DELETE，功能：删除自动回复信息接口。
      */
     Route::get(
-        'v1/talk_module/replys_route',
+        'replys_route',
         'talk_module/v1.controller.SessionController/replysAdd'
     );
     Route::get(
-        'v1/talk_module/replys_route',
+        'replys_route',
         'talk_module/v1.controller.SessionController/replysList'
     );
     Route::put(
-        'v1/talk_module/replys_route',
+        'replys_route',
         'talk_module/v1.controller.SessionController/replysEdit'
     );
     Route::delete(
-        'v1/talk_module/replys_route',
+        'replys_route',
         'talk_module/v1.controller.SessionController/replysDel'
     );
 })->middleware('Right_v3_IsAdmin');

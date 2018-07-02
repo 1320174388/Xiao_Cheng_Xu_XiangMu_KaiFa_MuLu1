@@ -9,6 +9,7 @@
  */
 namespace app\talk_module\working_version\v1\dao;
 use app\talk_module\working_version\v1\model\MessageModel;
+use think\Db;
 class MessagesDao implements MessagesInterface
 {
     /**
@@ -21,13 +22,10 @@ class MessagesDao implements MessagesInterface
      */
     public function  messagesSelect($leavingIndex)
     {
-        // 实例化自动model
-        $MessagesModel = new MessageModel;
         //获取单个提问的所有数据
-        $list = $MessagesModel->where(
-            'leaving_index'and'message_sort',
-            $leavingIndex
-        )->find();
+        $list = MessageModel::where('leaving_index',$leavingIndex)
+            ->order('message_sort', 'asc')
+            ->select();
         //验证
         if(!$list){
             return returnData('error',false);

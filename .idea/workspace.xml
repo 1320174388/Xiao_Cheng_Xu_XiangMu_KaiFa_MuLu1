@@ -27,10 +27,11 @@
       <file leaf-file-name="MessagesDao.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/dao/MessagesDao.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="29" column="8" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+            <state relative-caret-position="348">
+              <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
               <folding>
                 <element signature="e#6#160#0#PHP" expanded="true" />
+                <element signature="e#211#269#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -62,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/dao/LeavingsDao.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="296">
-              <caret line="27" column="74" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="74" />
+              <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="74" />
               <folding>
                 <element signature="e#6#160#0#PHP" expanded="true" />
               </folding>
@@ -305,12 +306,12 @@
       <option name="presentableId" value="Default" />
       <updated>1530366877593</updated>
       <workItem from="1530366878705" duration="3457000" />
-      <workItem from="1530493421285" duration="27313000" />
+      <workItem from="1530493421285" duration="30947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30770000" />
+    <option name="totallyTimeSpent" value="34404000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -777,16 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/dao/LeavingsDao.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="27" column="74" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="74" />
-          <folding>
-            <element signature="e#6#160#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/service/MessagesServer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="401">
@@ -795,12 +786,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/dao/MessagesDao.php">
+    <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/dao/LeavingsDao.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="29" column="8" lean-forward="false" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+        <state relative-caret-position="296">
+          <caret line="27" column="31" lean-forward="false" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="74" />
           <folding>
             <element signature="e#6#160#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/talk_module/working_version/v1/dao/MessagesDao.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+          <folding>
+            <element signature="e#6#160#0#PHP" expanded="true" />
+            <element signature="e#211#269#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

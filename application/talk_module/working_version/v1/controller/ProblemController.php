@@ -53,7 +53,7 @@ class ProblemController extends Controller
      * 功  能 : 处理用户后期继续提问信息函数
      * 变  量 : -----------------------------
      * 输  入 : (Array) $data = [
-     *     'leavingIndex'     => '留言人主键',
+     *     'leavingIndex'     => '留言主键',
      *     'messageContent'   => '留言内容',
      * ];
      * 输  出 : {"errNum":0,"retMsg":"发送成功","retData":true}
@@ -110,6 +110,7 @@ class ProblemController extends Controller
      * 功  能 : 将处理人的主键写入留言表的处理人字段中，
      * 功  能 : 判断用户是否有未处理的留言信息，没有的话，将留言人状态改为2
      * 变  量 : -----------------------------
+     * 输  入 : (String) $peopleIndex  => '留言人主键',
      * 输  入 : (String) $leavingIndex => '留言主键',
      * 输  入 : (String) $adminToken   => '处理人主键',
      * 输  出 : {"errNum":0,"retMsg":"处理成功","retData":true}
@@ -118,10 +119,12 @@ class ProblemController extends Controller
     public function acknowledgement(Request $request)
     {
         // 获取留言主键，处理人主键
+        $peopleIndex  = $request->post('peopleIndex');
         $leavingIndex = $request->post('leavingIndex');
         $adminToken   = $request->post('adminToken');
         // 引入service层代码
         $res = (new ProblemService())->putLeaving(
+            $peopleIndex,
             $leavingIndex,
             $adminToken
         );

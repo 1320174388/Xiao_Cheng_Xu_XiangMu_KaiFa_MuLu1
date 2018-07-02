@@ -9,6 +9,8 @@
  */
 namespace app\talk_module\working_version\v1\service;
 
+use app\talk_module\working_version\v1\dao\ProblemDao;
+
 class ProblemService
 {
     /**
@@ -26,6 +28,11 @@ class ProblemService
      */
     public function postValue($data)
     {
-
+        // 实例化ProblemDao.php
+        $problemDao = (new ProblemDao())->problemCreate($data);
+        // 验证数据格式
+        if($problemDao['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$problemDao['data']);
     }
 }

@@ -51,7 +51,6 @@ class ProblemController extends Controller
      * 输  入 : (Array) $data = [
      *     'peopleIndex'     => '留言人主键',
      *     'messageContent'  => '留言内容',
-     *     'messageIdentity' => '留言身份',
      * ];
      * 输  出 : {"errNum":0,"retMsg":"发送成功","retData":true}
      * 创  建 : 2018/07/02 17:39
@@ -61,7 +60,6 @@ class ProblemController extends Controller
         // 获取所有传值数据s
         $data['peopleIndex']     = $request->post('peopleIndex');
         $data['messageContent']  = $request->post('messageContent');
-        $data['messageIdentity'] = $request->post('messageIdentity');
         // 引入service层代码
         $res = (new ProblemService())->postContent($data);
         // 验证数据

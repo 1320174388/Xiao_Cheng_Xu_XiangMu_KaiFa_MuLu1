@@ -23,9 +23,16 @@ class ReplysController extends Controller
      * 输  出 : --------------------------------------
      * 创  建 : 2018/06/30 21:26
      */
-    public function replysValue()
+    public function replysValue(Request $request)
     {
         // 获取回复信息
+        $sessionIndex = $request->get('sessionIndex');
+        // 引入Service层处理逻辑
+        $res = (new ReplysService())->getReplys($sessionIndex);
+        // 验证返回数据
+        if($res['msg']=='error') return returnResponse(1,'没有这条回复信息');
+        // 返回数据
+        return returnResponse(0,'请求成功',$res['data']);
     }
 
     /**

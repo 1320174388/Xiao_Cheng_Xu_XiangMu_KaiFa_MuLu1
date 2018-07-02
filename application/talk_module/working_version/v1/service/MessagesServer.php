@@ -9,6 +9,8 @@
  */
 namespace app\talk_module\working_version\v1\service;
 
+use app\talk_module\working_version\v1\model\MessageModel;
+
 class MessagesServer
 {
     /**
@@ -21,6 +23,11 @@ class MessagesServer
      */
     public function getMessages($leavingIndex)
     {
-
+        // 引入ReplysDao层
+        $list = (new MessageModel())->MessagesDao($leavingIndex);
+        //验证
+        if($list['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$list['data']);
     }
 }

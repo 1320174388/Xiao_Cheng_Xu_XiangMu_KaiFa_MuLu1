@@ -26,7 +26,7 @@ class ReplyDao implements ReplysInterface
 		$ReplyModel = new ReplyModel;
 		// 判断查询为单个回复数据还是所有回复数据
 		// 如果$index为空字符串,就查询所有
-		if($index = ''){
+		if($index == ''){
 			$list = $ReplyModel->select();
 		}else{
 			$list = $ReplyModel->where('session_index',$index)->find();

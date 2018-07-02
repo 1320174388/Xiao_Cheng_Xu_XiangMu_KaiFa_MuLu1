@@ -26,19 +26,16 @@ class ProblemValidate
     public function ProblemVerification($data)
     {
         // 判断是否为空
-        if(!$data['peopleName'])     return returnDate('error','留言人名称为空');
-        if(!$data['leavingTitle'])   return returnDate('error','留言标题为空');
-        if(!$data['messageContent']) return returnDate('error','留言内容为空');
+        if(!$data['peopleName'])     return returnDate('error','请发送提问人名称');
+        if(!$data['leavingTitle'])   return returnDate('error','请输入标题');
+        if(!$data['messageContent']) return returnDate('error','请输入内容');
 
-        // 判断名称长度是不是大于10个字符
-        if(strlen($data['peopleName']) > 10)
-            return returnDate('error','留言人名称太长');
         // 判断标题
-        if(strlen($data['peopleName']) > 100)
-            return returnDate('error','留言标题太长');
+        if(strlen($data['peopleName']) > 50)
+            return returnDate('error','标题过长');
         //  判断内容
         if(strlen($data['messageContent'] > 2000))
-            return returnDate('error','内容长度太大');
+            return returnDate('error','内容不能超过2000字');
         // 返回正确格式
         return returnDate('success',true);
     }
@@ -57,11 +54,11 @@ class ProblemValidate
     public function ProblemsVerification($data)
     {
         // 判断内容是否为空
-        if(!$data['messageContent']) return returnDate('error','留言内容为空');
+        if(!$data['messageContent']) return returnDate('error','请输入内容');
 
         //  判断内容
         if(strlen($data['messageContent'] > 2000))
-            return returnDate('error','内容长度太大');
+            return returnDate('error','内容不能超过2000字');
         // 返回正确格式
         return returnDate('success',true);
     }

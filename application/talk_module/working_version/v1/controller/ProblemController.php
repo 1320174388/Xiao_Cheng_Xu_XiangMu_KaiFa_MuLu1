@@ -41,6 +41,32 @@ class ProblemController extends Controller
         // 验证数据
         if($res['msg']=='error') returnResponse(1,$res['data']);
         // 返回成功数据
-        return returnResponse(1,'提问成功',$res['data']);
+        return returnResponse(1,'提问成功',true);
+    }
+
+    /**
+     * 名  称 : problemContent()
+     * 功  能 : 处理用户后期继续提问信息函数
+     * 变  量 : -----------------------------
+     * 输  入 : (Array) $data = [
+     *     'peopleIndex'     => '留言人主键',
+     *     'messageContent'  => '留言内容',
+     *     'messageIdentity' => '留言身份',
+     * ];
+     * 输  出 : {"errNum":0,"retMsg":"发送成功","retData":true}
+     * 创  建 : 2018/07/02 17:39
+     */
+    public function problemContent(Request $request,$data=[])
+    {
+        // 获取所有传值数据s
+        $data['peopleIndex']     = $request->post('peopleIndex');
+        $data['messageContent']  = $request->post('messageContent');
+        $data['messageIdentity'] = $request->post('messageIdentity');
+        // 引入service层代码
+        $res = (new ProblemService())->postContent($data);
+        // 验证数据
+        if($res['msg']=='error') returnResponse(1,$res['data']);
+        // 返回成功数据
+        return returnResponse(1,'发送成功',true);
     }
 }

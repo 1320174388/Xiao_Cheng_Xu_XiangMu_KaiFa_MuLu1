@@ -133,13 +133,33 @@ class ProblemDao implements ProblemInterface
      * 输  出 : ['msg'=>'success',true]
      * 创  建 : 2018/07/02 23:13
      */
-    public function adminLeaving($peopleIndex,$leavingIndex,$adminToken)
+    public function adminLeaving($peopleIndex,$leavingIndex,$adminToken,$type=true)
     {
-        // 实例化留言信息表
-        $leavingModel = new LeavingModel();
-        $leavingModel->laeving_status = 2;
-        $leavingModel->leaving_handel = $adminToken;
-        // 判断用户是否有未处理的留言信息
+        // 启动事务
+        Db::startTrans();
+        try {
+            // 实例化留言信息表
+            $leavingModel = new LeavingModel();
+            $leavingModel->laeving_status = 2;
+            $leavingModel->leaving_handel = $adminToken;
+            if(!$leavingModel->save()) return returnData('error');
+            $data = LeavingModel::where('people_index',$peopleIndex)
+                        ->select();
+            foreach($data as $k=>$v)
+            {
+                if($v['leaving_status']==1) $type = false;
+            }
+            if($type){
+                $peopleModel = new PeopleModel();
+                $peopleModel->people_status = 2;
+                if(!$peopleModel->save()) return returnData('error');
+            }
+            // 提交事务
+            Db::commit(); return returnData('success',true);
+        } catch (\Exception $e) {
+            // 回滚事务
+            Db::rollback(); return returnData('error',false);
+        }
         
     }
 }

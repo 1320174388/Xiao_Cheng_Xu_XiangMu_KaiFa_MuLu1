@@ -10,7 +10,7 @@
 namespace app\talk_module\working_version\v1\controller;
 use think\Controller;
 use think\Request;
-use app\talk_module\working_version\v1\library\ReplysLibrary;
+use app\talk_module\working_version\v1\validator\ReplysValidate;
 use app\talk_module\working_version\v1\service\ReplysService;
 
 class ReplysController extends Controller

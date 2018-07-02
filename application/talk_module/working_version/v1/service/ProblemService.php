@@ -41,7 +41,7 @@ class ProblemService
      * 功  能 : 处理用户后期继续提问信息函数
      * 变  量 : --------------------------------------
      * 输  入 : (Array) $data = [
-     *     'peopleIndex'      => '留言人主键',
+     *     'leavingIndex'     => '留言人主键',
      *     'messageIdentity'  => '留言身份',
      *     'messageContent'   => '留言内容',
      * ];

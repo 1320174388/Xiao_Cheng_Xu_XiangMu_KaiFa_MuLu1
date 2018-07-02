@@ -3,7 +3,7 @@
  *  版权声明 :  地老天荒科技有限公司
  *  文件名称 :  ReplysService.php
  *  创 建 者 :  Shi Guang　Yu
- *  创建日期 :  2018/06/30 09:53
+ *  创建日期 :  2018/07/02 11:00
  *  文件描述 :  处理客服信息逻辑
  *  历史记录 :  -----------------------
  */
@@ -18,7 +18,7 @@ class ReplysService
      * 变  量 : --------------------------------------
      * 输  入 : (string) $sessionIndex => '回复信息主键';
      * 输  出 : ['msg'=>'success','data'=>'数据']
-     * 创  建 : 2018/06/30 09:53
+     * 创  建 : 2018/07/02 11:00
      */
     public function getReplys($sessionIndex='')
     {
@@ -38,7 +38,7 @@ class ReplysService
      * 输  入 : (string) $sessionType => '自动回复类型';
      * 输  入 : (string) $sessionInfo => '自动回复内容';
      * 输  出 : ['msg'=>'success','data'=>true]
-     * 创  建 : 2018/06/30 09:53
+     * 创  建 : 2018/07/02 11:00
      */
     public function postReplys($sessionName,$sessionType,$sessionInfo)
     {
@@ -59,7 +59,7 @@ class ReplysService
      * 输  入 : (string) $sessionType  => '自动回复类型';
      * 输  入 : (string) $sessionInfo  => '自动回复内容';
      * 输  出 : ['msg'=>'success','data'=>true]
-     * 创  建 : 2018/06/30 09:53
+     * 创  建 : 2018/07/02 11:00
      */
     public function putReplys($index,$sessionName,$sessionType,$sessionInfo)
     {
@@ -77,7 +77,7 @@ class ReplysService
      * 变  量 : --------------------------------------
      * 输  入 : (string) $index        => '回复信息主键';
      * 输  出 : ['msg'=>'success','data'=>true]
-     * 创  建 : 2018/06/30 09:53
+     * 创  建 : 2018/07/02 11:00
      */
     public function deleteReplys($index)
     {

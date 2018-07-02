@@ -23,13 +23,13 @@ class ReplysDao implements ReplysInterface
 	public function replySelect($index='')
 	{
 		// 实例化自动回复信息model
-		$ReplyModel = new ReplyModel;
+		$replyModel = new ReplyModel;
 		// 判断查询为单个回复数据还是所有回复数据
 		// 如果$index为空字符串,就查询所有
 		if($index == ''){
-			$list = $ReplyModel->select();
+			$list = $replyModel->select();
 		}else{
-			$list = $ReplyModel->where('session_index',$index)->find();
+			$list = $replyModel->where('session_index',$index)->find();
 		}
 		// 验证
 		if(!$list){
@@ -52,17 +52,17 @@ class ReplysDao implements ReplysInterface
 	public function replyCreate($sessionName,$sessionType,$sessionInfo)
 	{
 		// 实例化自动回复信息model
-		$ReplyModel = new ReplyModel;
+		$replyModel = new ReplyModel;
 		// 生成自动回复主键
-		$ReplyModel->session_index	 = md5(uniqid());
+		$replyModel->session_index	 = md5(uniqid());
 		// 获取自动回复名称
-		$ReplyModel->session_name    = $sessionName;
+		$replyModel->session_name    = $sessionName;
 		// 获取自动回复类型
-		$ReplyModel->session_type    = $sessionType;
+		$replyModel->session_type    = $sessionType;
 		// 获取自动回复内容
-		$ReplyModel->session_content = $sessionInfo;
+		$replyModel->session_content = $sessionInfo;
 		// 保存数据库
-		$data = $ReplyModel->save();
+		$data = $replyModel->save();
 		// 验证
 		if(!$data){
 			return returnData('error',false);
@@ -85,19 +85,19 @@ class ReplysDao implements ReplysInterface
 	public function replyUpdate($index,$sessionName,$sessionType,$sessionInfo)
 	{
 		// 实例化自动回复信息model
-		$ReplyModel = new ReplyModel;
+		$replyModel = new ReplyModel;
 
 		// 获取回复信息主键
-		$ReplyModel->session_index   = $index;
+		$replyModel->session_index   = $index;
 		
 		// 进行修改
-		$res = $ReplyModel->save([
+		$res = $replyModel->save([
 			// 获取自动回复信息名称
-			$ReplyModel->session_name    = $sessionName,
+			$replyModel->session_name    = $sessionName,
 			// 获取自动回复信息类型
-			$ReplyModel->session_type  	 = $sessionType,
+			$replyModel->session_type  	 = $sessionType,
 			// 获取自动回复信息内容
-			$ReplyModel->session_content = $sessionInfo,
+			$replyModel->session_content = $sessionInfo,
 		],['session_index'=>$index]);
 		// 验证
 		if(!$res){
@@ -118,9 +118,9 @@ class ReplysDao implements ReplysInterface
 	public function replyDelete($index)
 	{
 		// 实例化自动回复信息model
-		$ReplyModel = new ReplyModel;
+		$replyModel = new ReplyModel;
 		// 执行删除操作
-		$del = $ReplyModel->where('session_index',$index)->delete();
+		$del = $replyModel->where('session_index',$index)->delete();
 		// 验证
 		if(!$del){
 			return returnData('error',false);

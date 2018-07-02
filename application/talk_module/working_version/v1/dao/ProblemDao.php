@@ -32,7 +32,6 @@ class ProblemDao implements ProblemInterface
      */
     public function problemCreate($data)
     {
-
         // 实例化留言人信息model类
         $peopleModel  = new PeopleModel();
         // 实例化保存所有留言model类

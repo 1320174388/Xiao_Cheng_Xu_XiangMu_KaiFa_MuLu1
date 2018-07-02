@@ -71,5 +71,9 @@ Route::group('v1/talk_module/', function(){
         'admin_content',
         'talk_module/v1.controller.ProblemController/adminContent'
     );
+    Route::put(
+        'acknowledgement',
+        'talk_module/v1.controller.ProblemController/acknowledgement'
+    );
 })->middleware('Right_v3_IsAdmin');
 

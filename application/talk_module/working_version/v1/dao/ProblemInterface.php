@@ -12,7 +12,7 @@ namespace app\talk_module\working_version\v1\dao;
 interface ProblemInterface
 {
     /**
-     * 名  称 : replySelect()
+     * 名  称 : problemCreate()
      * 功  能 : 获取留言人提问信息，如果留言人不存在，将留留言人写入数据库。
      * 功  能 : 用户提的问题，写入问题数据库，保存标题，创建时间。
      * 功  能 : 提问问题的内容写入留言信息数据库，信息身份：User/Admin

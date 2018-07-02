@@ -51,6 +51,14 @@ class ReplysController extends Controller
         $sessionName = $request->get('sessionName');
         $sessionType = $request->get('sessionType');
         $sessionInfo = $request->get('sessionInfo');
+        // 验证回复信息
+        $val = (new ReplysValidate())->replysVerification(
+            $sessionName,
+            $sessionType,
+            $sessionInfo
+        );
+        // 判断数据是否正确
+        if($val['msg']=='error') return returnResponse(1,$val['data']);
         // 引入Service层处理逻辑
         $res = (new ReplysService())->postReplys(
             $sessionName,
@@ -58,7 +66,7 @@ class ReplysController extends Controller
             $sessionInfo
         );
         // 验证返回数据
-        if($res['msg']=='error') return returnResponse(1,'添加失败');
+        if($res['msg']=='error') return returnResponse(2,'添加失败');
         // 返回数据
         return returnResponse(0,'添加成功',$res['data']);
     }
@@ -99,6 +107,14 @@ class ReplysController extends Controller
         $sessionName  = $request->get('sessionName');
         $sessionType  = $request->get('sessionType');
         $sessionInfo  = $request->get('sessionInfo');
+        // 验证回复信息
+        $val = (new ReplysValidate())->replysVerification(
+            $sessionName,
+            $sessionType,
+            $sessionInfo
+        );
+        // 判断数据是否正确
+        if($val['msg']=='error') return returnResponse(1,$val['data']);
         // 引入Service层处理逻辑
         $res = (new ReplysService())->putReplys(
             $sessionIndex,

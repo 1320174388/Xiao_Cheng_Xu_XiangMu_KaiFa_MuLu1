@@ -74,13 +74,13 @@ class ProblemDao implements ProblemInterface
             if(!$messageModel->save())
                 // 返回数据
                 return returnData('error',false);
-            return returnData('success',true);
             // 提交事务
             Db::commit();
+            return returnData('success',true);
         } catch (\Exception $e) {
-            return returnData('error',false);
             // 回滚事务
             Db::rollback();
+            return returnData('error',false);
         }
     }
 }

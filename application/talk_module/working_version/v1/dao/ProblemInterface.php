@@ -17,6 +17,7 @@ interface ProblemInterface
      * 功  能 : 用户提的问题，写入问题数据库，保存标题，创建时间。
      * 功  能 : 提问问题的内容写入留言信息数据库，信息身份：User/Admin
      * 输  入 : (Array) $data = [
+     *     'peopleIndex'    => '留言人主键',
      *     'peopleName'     => '留言人名称',
      *     'peopleSex'      => '留言人性别',
      *     'leavingTitle'   => '留言标题',

@@ -21,6 +21,7 @@ class ProblemDao implements ProblemInterface
      * 功  能 : 用户提的问题，写入问题数据库，保存标题，创建时间。
      * 功  能 : 提问问题的内容写入留言信息数据库，信息身份：User/Admin
      * 输  入 : (Array) $data = [
+     *     'peopleIndex'    => '留言人主键',
      *     'peopleName'     => '留言人名称',
      *     'peopleSex'      => '留言人性别',
      *     'leavingTitle'   => '留言标题',
@@ -32,14 +33,12 @@ class ProblemDao implements ProblemInterface
      */
     public function problemCreate($data)
     {
-        // 实例化留言人信息model类
+        // 实例化留言人/留言/留言信息model类
         $peopleModel  = new PeopleModel();
-        // 实例化保存所有留言model类
         $leavingModel = new LeavingModel();
-        // 实例化留言信息model类
         $messageModel = new MessageModel();
-        // 标识
-        $peopleIndex  = md5(uniqid());
+        // 获取/生成标识
+        $peopleIndex  = $data['peopleIndex'];
         $leavingIndex = md5(uniqid());
         // 启动事务
         Db::startTrans();
@@ -50,36 +49,28 @@ class ProblemDao implements ProblemInterface
             $peopleModel->people_sex    = $data['peopleSex'];
             $peopleModel->people_status = '1';
             $peopleModel->people_time   = time();
-            // 验证
-            if(!$peopleModel->save())
-                // 返回数据
-                return returnData('error',false);
+            // 验证数据
+            if(!$peopleModel->save()) return returnData('error',false);
             // 处理留言数据
             $leavingModel->leaving_index  = $leavingIndex;
             $leavingModel->people_index   = $peopleIndex;
             $leavingModel->leaving_title  = $data['leavingTitle'];
             $leavingModel->leaving_status = '1';
             $leavingModel->leaving_time   = time();
-            // 验证
-            if(!$leavingModel->save())
-                // 返回数据
-                return returnData('error',false);
+            // 验证数据
+            if(!$leavingModel->save()) return returnData('error',false);
             // 处理留言信息数据
             $messageModel->leaving_index    = $leavingIndex;
             $messageModel->message_content  = $data['messageContent'];
             $messageModel->message_identity = 'User';
             $messageModel->message_sort     = '1';
-            // 验证
-            if(!$messageModel->save())
-                // 返回数据
-                return returnData('error',false);
+            // 验证数据
+            if(!$messageModel->save()) return returnData('error',false);
             // 提交事务
-            Db::commit();
-            return returnData('success',true);
+            Db::commit(); return returnData('success',true);
         } catch (\Exception $e) {
             // 回滚事务
-            Db::rollback();
-            return returnData('error',false);
+            Db::rollback(); return returnData('error',false);
         }
     }
 }

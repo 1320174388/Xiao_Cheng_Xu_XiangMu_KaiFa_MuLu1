@@ -24,7 +24,10 @@ class MessagesDao implements MessagesInterface
         // 实例化自动model
         $MessagesModel = new MessageModel;
         //获取单个提问的所有数据
-        $list = $MessagesModel->where('leaving_index'and'message_sort',$leavingIndex)->find();
+        $list = $MessagesModel->where(
+            'leaving_index'and'message_sort',
+            $leavingIndex
+        )->find();
         //验证
         if(!$list){
             return returnData('error',false);

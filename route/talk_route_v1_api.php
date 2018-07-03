@@ -20,7 +20,7 @@ Route::get(
 // : 前台接口，传值方式：POST，功能：用户发起提问信息的接口。
 // : 前台接口，传值方式：GET， 功能：用户获取自己所有的提问信息。
 // : 前台接口，传值方式：GET， 功能：用户获取自己提问信息的内容。
-// : 前台接口，传值方式：GET， 功能：用户后续发送提问信息的接口。
+// : 前台接口，传值方式：POST，功能：用户后续发送提问信息的接口。
 // +------------------------------------------------------
 Route::post(
     'v1/talk_module/problem_value',
@@ -52,27 +52,27 @@ Route::group('v1/talk_module/', function(){
      * 传值方式：PUT，   功能：确定处理信息接口。
      */
     Route::get(
-        'replys_route',
+        'replys_route/:token',
         'talk_module/v1.controller.ReplysController/replysAdd'
     );
     Route::get(
-        'replys_route',
+        'replys_route/:token',
         'talk_module/v1.controller.ReplysController/replysList'
     );
     Route::put(
-        'replys_route',
+        'replys_route/:token',
         'talk_module/v1.controller.ReplysController/replysEdit'
     );
     Route::delete(
-        'replys_route',
+        'replys_route/:token',
         'talk_module/v1.controller.ReplysController/replysDel'
     );
     Route::post(
-        'admin_content',
+        'admin_content/:token',
         'talk_module/v1.controller.ProblemController/adminContent'
     );
     Route::put(
-        'acknowledgement',
+        'acknowledgement/:token',
         'talk_module/v1.controller.ProblemController/acknowledgement'
     );
 })->middleware('Right_v3_IsAdmin');

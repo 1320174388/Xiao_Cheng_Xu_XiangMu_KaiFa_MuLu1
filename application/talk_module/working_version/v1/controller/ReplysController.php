@@ -125,7 +125,7 @@ class ReplysController extends Controller
         // 验证返回数据
         if($res['msg']=='error') return returnResponse(1,'修改失败');
         // 返回数据
-        return returnResponse(0,'修改成功',$res['data']);
+        return returnResponse(0,'修改成功',true);
     }
 
     /**
@@ -145,6 +145,6 @@ class ReplysController extends Controller
         // 验证返回数据
         if($res['msg']=='error') return returnResponse(1,'删除失败');
         // 返回数据
-        return returnResponse(0,'删除成功',$res['data']);
+        return returnResponse(0,'删除成功',true);
     }
 }

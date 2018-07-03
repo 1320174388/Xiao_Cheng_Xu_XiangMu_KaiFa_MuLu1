@@ -32,6 +32,6 @@ class MessagesController extends Controller
         // 验证数据结构
         if($res['msg']=='error') return returnResponse(0,'请求失败');
         // 返回数据
-        return returnResponse(0,'请求成功',true);
+        return returnResponse(0,'请求成功',$res['data']);
     }
 }

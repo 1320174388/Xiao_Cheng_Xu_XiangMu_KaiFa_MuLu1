@@ -51,7 +51,7 @@ Route::group('v1/talk_module/', function(){
      * 传值方式：POST，  功能：客服回复信息接口。
      * 传值方式：PUT，   功能：确定处理信息接口。
      */
-    Route::get(
+    Route::post(
         'replys_route/:token',
         'talk_module/v1.controller.ReplysController/replysAdd'
     );

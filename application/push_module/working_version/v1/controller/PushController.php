@@ -35,4 +35,22 @@ class PushController extends Controller
         // 返回数据
         return returnResponse(0,'写入成功',true);
     }
+    /**
+     * 名  称 : pushTemplate()
+     * 功  能 : 批量推送模板消息
+     * 变  量 : --------------------------------------
+     * 输  入 : --------------------------------------
+     * 输  入 : --------------------------------------
+     * 输  出 : {"errNum":0,"retMsg":"发送成功","retData":true}
+     * 创  建 : 2018/07/04 16:19
+     */
+    public function pushTemplate()
+    {
+        // 引入Service层代码
+        $res = (new PushService())->pushUserTemplate();
+        // 验证数据是否写入成功
+        if($res['msg']=='error') return returnResponse(1,'发送失败');
+        // 返回数据
+        return returnResponse(0,'发送成功',true);
+    }
 }

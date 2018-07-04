@@ -12,7 +12,7 @@
 // : 前台接口，传值方式：POST，功能：接受formId接口
 // +------------------------------------------------------
 Route::post(
-    'v1/push_module/replys_route',
+    'v1/push_module/push_route',
     'push_module/v1.controller.PushController/pushInit'
 );
 
@@ -24,8 +24,8 @@ Route::group('v1/push_module/', function(){
      * 传值方式：PUT，功能：添加自动回复信息接口。】
      */
     Route::put(
-        'replys_route/:token',
-        'push_module/v1.controller.PushController/replysAdd'
+        'push_route/:token',
+        'push_module/v1.controller.PushController/pushTemplate'
     );
 })->middleware('Right_v3_IsAdmin');
 

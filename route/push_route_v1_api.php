@@ -27,5 +27,5 @@ Route::group('v1/push_module/', function(){
         'push_route/:token',
         'push_module/v1.controller.PushController/pushTemplate'
     );
-})->middleware('Right_v3_IsAdmin');
+});
 

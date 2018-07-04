@@ -47,6 +47,7 @@ class PushController extends Controller
      */
     public function pushTemplate()
     {
+        return returnResponse(0,'发送成功',true);
         $data = [
             'touser'           => 'ocEd35JmegGO90zFLoblR3p26B9Q',
             'template_id'      => '3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk',
@@ -66,6 +67,6 @@ class PushController extends Controller
         // 验证数据是否写入成功
         if($res['msg']=='error') return returnResponse(1,'发送失败');
         // 返回数据
-        return returnResponse(0,'发送成功',$res['data']);
+        return returnResponse(0,'发送成功',true);
     }
 }

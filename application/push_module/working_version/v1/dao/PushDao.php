@@ -20,7 +20,7 @@ class PushDao implements PushInterface
      * 输  出 : ['msg'=>'success','data'=>true]
      * 创  建 : 2018/07/04 16:32
      */
-    public function pushCreate($userToken,$formId);
+    public function pushCreate($userToken,$formId)
     {
     	// 实例化PushModel层
     	$pushModel = new PushModel();

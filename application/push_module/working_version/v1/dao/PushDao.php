@@ -48,10 +48,10 @@ class PushDao implements PushInterface
     public function pushSetDel()
     {
         // 获取表名
-        $userTable = config('v1_tableName.UsersTable');
-        $pushTable = config('v1_tableName.PushTable');
-        UsersModel::field($userTable.'user_openid'.$pushTable.'push_formid')
-            ->leftjoin($pushTable)
+        $user = config('v1_tableName.UsersTable');
+        $push = config('v1_tableName.PushTable');
+        UsersModel::field($user.'user_openid'.$push.'push_formid')
+            ->leftjoin($push)
             ->select();
     }
 }

@@ -8,7 +8,7 @@
  *  历史记录 :  -----------------------
  */
 namespace app\push_module\working_version\v1\dao;
-use app\push_module\working_version\v1\model\UsersModel;
+use app\push_module\working_version\v1\model\UsersModel as User;
 use app\push_module\working_version\v1\model\PushModel;
 
 class PushDao implements PushInterface
@@ -50,8 +50,13 @@ class PushDao implements PushInterface
         // 获取表名
         $user = config('v1_tableName.UsersTable');
         $push = config('v1_tableName.PushTable');
-        UsersModel::field($user.'user_openid'.$push.'push_formid')
+        // 获取数据
+        $data = User::field($user.'user_openid'.$push.'push_formid')
             ->leftjoin($push)
             ->select();
+        // 验证数据
+        if(!$data) return returnData('error');
+        // 返回数据
+        return returnData('success',$data);
     }
 }

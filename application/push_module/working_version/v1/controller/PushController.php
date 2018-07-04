@@ -51,6 +51,6 @@ class PushController extends Controller
         // 验证数据是否写入成功
         if($res['msg']=='error') return returnResponse(1,'发送失败');
         // 返回数据
-        return returnResponse(0,'发送成功',true);
+        return returnResponse(0,'发送成功',$res['data']);
     }
 }

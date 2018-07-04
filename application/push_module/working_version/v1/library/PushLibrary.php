@@ -38,11 +38,11 @@ class PushLibrary
         // 解析代码
         $wxArr = json_decode($wxData,true);
         // 验证数据
-        if(!$wxArr) return returnData('error');
-        if(($wxArr['errcode']!=0)&&($wxArr['errmsg']!='ok')) {
-            return returnData('error');
+        if(!$wxArr) return returnData('error',$wxArr);
+        if(($wxArr['errcode']==0)&&($wxArr['errmsg']=='ok')) {
+            return returnData('success',true);
         }
-        return returnData('success',true);
+        return returnData('error',$wxArr);
     }
 
     /**

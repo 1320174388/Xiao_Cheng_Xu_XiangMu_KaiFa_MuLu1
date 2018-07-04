@@ -51,7 +51,7 @@ class PushController extends Controller
             'touser'           => 'ocEd35JmegGO90zFLoblR3p26B9Q',
             'template_id'      => '3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk',
             'page'             => '/pages/cheshi/cheshi',
-            'form_id'          => '1530707843774',
+            'form_id'          => '1530707842567',
             'data'             => [
                 'keyword1'=>['value'=>'ShiGuangYu'],
                 'keyword2'=>['value'=>'管理员申请'],
@@ -66,6 +66,6 @@ class PushController extends Controller
         // 验证数据是否写入成功
         if($res['msg']=='error') return returnResponse(1,'发送失败');
         // 返回数据
-        return returnResponse(0,'发送成功',true);
+        return returnResponse(0,'发送成功',$res['data']);
     }
 }

@@ -47,7 +47,6 @@ class PushController extends Controller
      */
     public function pushTemplate()
     {
-        return returnResponse(0,'发送成功',true);
         $data = [
             'touser'           => 'ocEd35JmegGO90zFLoblR3p26B9Q',
             'template_id'      => '3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk',

@@ -21,7 +21,7 @@ class UserModel extends Model
     // 加载配置数据表名
     public function initialize()
     {
+        parent::initialize();
         $this->table = config('v3_tableName.UserTable');
-        return $this;
     }
 }

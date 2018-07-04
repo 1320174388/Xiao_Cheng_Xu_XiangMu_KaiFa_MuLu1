@@ -50,7 +50,8 @@ class PushDao implements PushInterface
         // 获取表名
         $userTable = config('v1_tableName.UsersTable');
         $pushTable = config('v1_tableName.PushTable');
-        UsersModel::field('')
+        UsersModel::field($userTable.'user_openid'.$pushTable.'push_formid')
+            ->leftjoin($pushTable)
             ->select();
     }
 }

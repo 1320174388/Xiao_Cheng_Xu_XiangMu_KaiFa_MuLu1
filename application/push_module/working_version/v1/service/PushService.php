@@ -22,7 +22,7 @@ class PushService
      */
     public function appFormId($userToken,$formId)
     {
-        // 引入PushDao层
+        // 引入PushDao层pushCreate()
         $push = (new PushDao())->pushCreate($userToken,$formId);
         // 验证
         if($push['msg'=='error']) return returnData('error');
@@ -41,6 +41,11 @@ class PushService
      */
     public function pushUserTemplate()
     {
-
+        // 引入PushDao层pushSetDel()
+        $setDel = (new PushDao())->pushSetDel();
+        // 验证
+        if($setDel['msg']=='error') return returnData('error');
+        // 返回数据格式
+        return returnData('success',$setDel['data']);
     }
 }

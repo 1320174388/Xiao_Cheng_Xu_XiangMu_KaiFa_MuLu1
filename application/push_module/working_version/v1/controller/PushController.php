@@ -11,6 +11,7 @@ namespace app\push_module\working_version\v1\controller;
 use think\Controller;
 use think\Request;
 use app\push_module\working_version\v1\service\PushService;
+use app\push_module\working_version\v1\library\PushLibrary;
 
 class PushController extends Controller
 {
@@ -46,8 +47,22 @@ class PushController extends Controller
      */
     public function pushTemplate()
     {
-        // 引入Service层代码
-        $res = (new PushService())->pushUserTemplate();
+        $data = [
+            'touser'           => 'ocEd35JmegGO90zFLoblR3p26B9Q',
+            'template_id'      => '3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk',
+            'page'             => '/pages/cheshi/cheshi',
+            'form_id'          => '1530707843774',
+            'data'             => [
+                'keyword1'=>['value'=>'ShiGuangYu'],
+                'keyword2'=>['value'=>'管理员申请'],
+                'keyword3'=>['value'=>'2015年01月05日 12:30'],
+                'keyword4'=>['value'=>'未通过'],
+            ],
+        ];
+        // 引入Library自定义类
+        $res = (new PushLibrary)->sendTemplate($data);
+//        // 引入Service层代码
+//        $res = (new PushService())->pushUserTemplate();
         // 验证数据是否写入成功
         if($res['msg']=='error') return returnResponse(1,'发送失败');
         // 返回数据

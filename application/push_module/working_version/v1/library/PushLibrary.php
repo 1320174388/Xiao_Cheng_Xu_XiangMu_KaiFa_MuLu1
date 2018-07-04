@@ -35,7 +35,15 @@ class PushLibrary
         // 发送模板消息
         $url = config('wx_config.wx_Push_Url');
         $url.= '?access_token='.$this->accessToken();
-        $this->curlPost($url,$data);
+        $wxData = $this->curlPost($url,$data);
+        // 解析代码
+        $wxArr = json_decode($wxData,true);
+        // 验证数据
+        if(!$wxArr) return returnData('error');
+        if(($wxArr['errcode']!=0)&&($wxArr['errmsg']!='ok')) {
+            return returnData('error');
+        }
+        return returnData('success',true);
     }
 
     /**

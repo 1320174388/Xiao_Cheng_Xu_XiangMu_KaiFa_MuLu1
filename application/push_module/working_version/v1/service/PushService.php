@@ -25,7 +25,7 @@ class PushService
         // 引入PushDao层pushCreate()
         $push = (new PushDao())->pushCreate($userToken,$formId);
         // 验证
-        if($push['msg'=='error']) return returnData('error');
+        if($push['msg']=='error') return returnData('error');
         // 返回数据格式
         return returnData('success',$push['data']);
     }

@@ -22,8 +22,6 @@ class PushLibrary
      *     'page'             => '点击模板卡片后的跳转页面',
      *     'form_id'          => '表单提交场景下的formId',
      *     'data'             => [''=>''],
-     *     'color'            => '模板内容字体的颜色',
-     *     'emphasis_keyword' => '模板需要放大的关键词',
      * ];
      * 输  出 : ['msg'=>'success','data'=>true]
      * 创  建 : 2018/07/04 17:37

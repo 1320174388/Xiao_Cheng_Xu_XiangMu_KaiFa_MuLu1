@@ -51,7 +51,7 @@ class PushDao implements PushInterface
         $user = config('v1_tableName.UsersTable');
         $push = config('v1_tableName.PushTable');
         // 获取数据
-        $data = User::select();
+        $data = User::all();
         // 验证数据
         if(!$data) return returnData('error');
         // 返回数据

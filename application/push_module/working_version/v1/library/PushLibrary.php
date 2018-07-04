@@ -62,7 +62,9 @@ class PushLibrary
         $url.= '&appid='.config('wx_config.wx_AppID');
         $url.= '&secret='.config('wx_config.wx_AppSecret');
         // 发送UTL请求,获取accessToken值
-        $accessToken = $this->curlPost($url);
+        $res = $this->curlPost($url);
+        $resArr = json_decode($res,true);
+        $accessToken = $resArr['access_token'];
         // 保存access_token到缓存
         cache('push_module_access_token',$accessToken,3600);
         // 返回缓存内的access_token

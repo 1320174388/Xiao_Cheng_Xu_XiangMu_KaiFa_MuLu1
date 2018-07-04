@@ -8,6 +8,7 @@
  *  历史记录 :  -----------------------
  */
 namespace app\push_module\working_version\v1\library;
+use think\Cache;
 
 class PushLibrary
 {
@@ -15,13 +16,68 @@ class PushLibrary
      * 名  称 : sendTemplate()
      * 功  能 : 发送模板消息
      * 变  量 : --------------------------------------
-     * 输  入 : (String) $userOpenId => '用户OpenId';
-     * 输  入 : (String) $userFormId => '表单ID';
+     * 输  入 : (Array) $data = [
+     *     'touser'           => '接收者（用户）的 openid',
+     *     'template_id'      => '所需下发的模板消息的id',
+     *     'page'             => '点击模板卡片后的跳转页面',
+     *     'form_id'          => '表单提交场景下的formId',
+     *     'data'             => [''=>''],
+     *     'color'            => '模板内容字体的颜色',
+     *     'emphasis_keyword' => '模板需要放大的关键词',
+     * ];
      * 输  出 : ['msg'=>'success','data'=>true]
-     * 创  建 : 2018/07/04 16：47
+     * 创  建 : 2018/07/04 17:37
      */
-    public function sendTemplate($userOpenId,$userFormId)
+    public function sendTemplate($data)
     {
-        
+        // 处理数据
+        if(is_array($data)){
+            $data = json_encode($data);
+        }
+        // 发送模板消息
+        $url = config('wx_config.wx_Push_Url');
+        $url.= '?access_token='.$this->accessToken();
+        $this->curlPost($url,$data);
+    }
+
+    /**
+     * 名  称 : accessToken()
+     * 功  能 : 获取AccessToken值
+     * 创  建 : 2018/07/04 17:50
+     */
+    private function accessToken()
+    {
+        if(Cache::get('push_module_access_token')){
+            return Cache::get('push_module_access_token');
+        }
+        // 获取Url地址
+        $url = config('wx_config.wx_Access_Token');
+        // 拼接URL地址
+        $url.= '?grant_type=client_credential';
+        $url.= '&appid='.config('wx_config.wx_AppID');
+        $url.= '&secret='.config('wx_config.wx_AppSecret');
+        // 发送UTL请求,获取accessToken值
+        $accessToken = $this->curlPost($url);
+        // 保存access_token到缓存
+        Cache::set('push_module_access_token',$accessToken,3600);
+        // 返回缓存内的access_token
+        return Cache::get('push_module_access_token');
+    }
+
+    /**
+     * 名  称 : curlPost()
+     * 功  能 : Curl请求发送数据
+     * 创  建 : 2018/07/04 17:50
+     */
+    private function curlPost($push_url,$post_data=[])
+    {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $push_url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        $output = curl_exec($ch);
+        curl_close($ch);
+        return $output;
     }
 }

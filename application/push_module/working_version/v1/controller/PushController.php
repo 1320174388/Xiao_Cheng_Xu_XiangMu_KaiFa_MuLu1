@@ -64,8 +64,8 @@ class PushController extends Controller
 //        // 引入Service层代码
 //        $res = (new PushService())->pushUserTemplate();
         // 验证数据是否写入成功
-        if($res['msg']=='error') return returnResponse(1,'发送失败');
+        if($res['msg']=='error') return returnResponse(1,'发送失败',$res['data']);
         // 返回数据
-        return returnResponse(0,'发送成功',$res['data']);
+        return returnResponse(0,'发送成功',true);
     }
 }

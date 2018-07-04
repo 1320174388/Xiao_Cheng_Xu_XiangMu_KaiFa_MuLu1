@@ -8,7 +8,7 @@
  *  历史记录 :  -----------------------
  */
 
-namespace app\talk_module\working_version\v1\model;
+namespace app\push_module\working_version\v1\model;
 use think\Model;
 
 class UsersModel extends Model

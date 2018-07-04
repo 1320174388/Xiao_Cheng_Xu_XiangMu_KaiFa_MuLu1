@@ -29,4 +29,18 @@ class PushService
         // 返回数据格式
         return returnData('success',$push['data']);
     }
+
+    /**
+     * 名  称 : pushUserTemplate()
+     * 功  能 : 批量推送模板消息
+     * 变  量 : --------------------------------------
+     * 输  入 : --------------------------------------
+     * 输  入 : --------------------------------------
+     * 输  出 : ['msg'=>'success','data'=>true]
+     * 创  建 : 2018/07/04 18:55
+     */
+    public function pushUserTemplate()
+    {
+
+    }
 }

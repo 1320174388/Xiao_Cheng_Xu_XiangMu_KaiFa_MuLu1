@@ -8,7 +8,9 @@
  *  历史记录 :  -----------------------
  */
 namespace app\push_module\working_version\v1\dao;
+use app\push_module\working_version\v1\model\UsersModel;
 use app\push_module\working_version\v1\model\PushModel;
+
 class PushDao implements PushInterface
 {
 	/**
@@ -33,5 +35,22 @@ class PushDao implements PushInterface
     	if(!$pushModel->save()) return returnData('error');
     	// 返回数据格式
     	return returnData('success',true);
+    }
+
+    /**
+     * 名  称 : pushSetDel()
+     * 功  能 : 获取所有用户的的openId及formId
+     * 输  入 : ------------------------------
+     * 输  入 : ------------------------------
+     * 输  出 : ['msg'=>'success','data'=>true]
+     * 创  建 : 2018/07/04 19:01
+     */
+    public function pushSetDel()
+    {
+        // 获取表名
+        $userTable = config('v1_tableName.UsersTable');
+        $pushTable = config('v1_tableName.PushTable');
+        UsersModel::field('')
+            ->select();
     }
 }

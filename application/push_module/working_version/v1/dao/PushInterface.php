@@ -20,4 +20,11 @@ interface PushInterface{
      */
     public function pushCreate($userToken,$formId);
 
+    /**
+     * 名  称 : pushSetDel()
+     * 功  能 : 获取所有用户的的openId及formId
+     * 创  建 : 2018/07/04 18:58
+     */
+    public function pushSetDel();
+
 }

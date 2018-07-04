@@ -42,7 +42,7 @@ class PushLibrary
         if(($wxArr['errcode']==0)&&($wxArr['errmsg']=='ok')) {
             return returnData('success',true);
         }
-        return returnData('error',$wxArr);
+        return returnData('error',json_decode($data));
     }
 
     /**

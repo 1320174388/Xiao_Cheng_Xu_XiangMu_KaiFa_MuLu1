@@ -15,5 +15,5 @@ return [
     // 推送模板消息表
     'PushTable' => 'dlth_data_push_lists',
     // 用户数据模型表
-    'UsersTable' => 'dlth_data_home_users',
+    'UserTable' => 'dlth_data_home_users',
 ];

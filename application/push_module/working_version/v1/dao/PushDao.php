@@ -8,7 +8,7 @@
  *  历史记录 :  -----------------------
  */
 namespace app\push_module\working_version\v1\dao;
-use app\push_module\working_version\v1\model\UsersModel as User;
+use app\push_module\working_version\v1\model\UserModel;
 use app\push_module\working_version\v1\model\PushModel;
 
 class PushDao implements PushInterface
@@ -48,10 +48,10 @@ class PushDao implements PushInterface
     public function pushSetDel()
     {
         // 获取表名
-        $user = config('v1_tableName.UsersTable');
+        $user = config('v1_tableName.UserTable');
         $push = config('v1_tableName.PushTable');
         // 获取数据
-        $data = User::all();
+        $data = UserModel::all();
         // 验证数据
         if(!$data) return returnData('error');
         // 返回数据

@@ -49,7 +49,7 @@ class PushController extends Controller
     {
         $data = [
             'touser'           => 'ocEd35JmegGO90zFLoblR3p26B9Q',
-            'template_id'      => '3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk',
+            'template_id'      => "3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk",
             'page'             => '/pages/cheshi/cheshi',
             'form_id'          => '1530707842567',
             'data'             => [

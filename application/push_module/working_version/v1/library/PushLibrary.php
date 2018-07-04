@@ -53,8 +53,8 @@ class PushLibrary
      */
     private function accessToken()
     {
-        if(Cache::get('push_module_access_token')){
-            return Cache::get('push_module_access_token');
+        if(Cache::get('pushModuleAccessToken')){
+            return Cache::get('pushModuleAccessToken');
         }
         // 获取Url地址
         $url = config('wx_config.wx_Access_Token');
@@ -65,9 +65,9 @@ class PushLibrary
         // 发送UTL请求,获取accessToken值
         $accessToken = $this->curlPost($url);
         // 保存access_token到缓存
-        Cache::set('push_module_access_token',$accessToken,3600);
+        Cache::set('pushModuleAccessToken',$accessToken,3600);
         // 返回缓存内的access_token
-        return Cache::get('push_module_access_token');
+        return Cache::get('pushModuleAccessToken');
     }
 
     /**

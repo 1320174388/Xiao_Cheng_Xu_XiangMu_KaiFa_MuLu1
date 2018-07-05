@@ -17,5 +17,5 @@ return [
     // 发送模版消息接口地址
     'wx_Push_Url' => 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send',
     // 申请审批通知 模板ID
-    'PushApply' => '3337XegxJ7gsM4VD_usYqL94FT2wzbi3v-Cew2iPeEk',
+    'PushApply' => 'zvC8jn1Ne5SuvpOlNNvEcfcmmIt0IUXREG0KDHgrbYs',
 ];

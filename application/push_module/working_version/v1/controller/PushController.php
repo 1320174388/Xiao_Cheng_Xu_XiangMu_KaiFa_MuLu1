@@ -49,14 +49,16 @@ class PushController extends Controller
     {
         $data = [
             'touser'           => 'ocEd35JmegGO90zFLoblR3p26B9Q',
-            'template_id'      => "",
+            'template_id'      => "zvC8jn1Ne5SuvpOlNNvEcfcmmIt0IUXREG0KDHgrbYs",
             'page'             => '/pages/cheshi/cheshi',
             'form_id'          => '1530707842567',
             'data'             => [
-                'keyword1'=>['value'=>'门店'],
-                'keyword2'=>['value'=>'预约时间'],
-                'keyword3'=>['value'=>'地址'],
-                'keyword4'=>['value'=>'备注'],
+                'keyword1'=>['value'=>'地老天荒'],
+                'keyword2'=>['value'=>'项目经理'],
+                'keyword3'=>['value'=>'ShiGuangYu'],
+                'keyword4'=>['value'=>'100544'],
+                'keyword5'=>['value'=>'等待审核'],
+                'keyword6'=>['value'=>'2018-07-05 10:48'],
             ],
         ];
         // 引入Library自定义类
